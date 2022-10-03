@@ -1,7 +1,9 @@
+import Login from "./Pages/Login/Login";
+
 function App() {
   return (
     <div className="App">
-      <h1>Dashboard</h1>
+      <Login />
     </div>
   );
 }

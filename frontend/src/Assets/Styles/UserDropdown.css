@@ -1,0 +1,57 @@
+.user-dropdown {
+  padding: 15px;
+}
+
+.dropdown-menu {
+  margin-top: 12px;
+  background: transparent;
+  box-shadow: -1px 0px 5px 6px rgba(0, 233, 188, 0.54);
+  -webkit-box-shadow: -1px 0px 5px 6px rgba(0, 233, 188, 0.54);
+  -moz-box-shadow: -1px 0px 5px 6px rgba(0, 233, 188, 0.54);
+}
+
+.dropdown-toggle {
+  color: #ff5783;
+  margin-right: 20px;
+  background-color: transparent;
+  border-radius: 7px;
+  box-shadow: -1px 0px 3px 2px rgba(0, 233, 188, 0.54);
+  -webkit-box-shadow: -1px 0px 5px 6px rgba(0, 233, 188, 0.54);
+  -moz-box-shadow: -1px 0px 5px 4px rgba(0, 233, 188, 0.54);
+}
+
+.dropdown-toggle:focus {
+  background: transparent;
+  color: #ff5783;
+  box-shadow: -1px 0px 3px 2px rgba(0, 233, 188, 0.54);
+  -webkit-box-shadow: -1px 0px 5px 6px rgba(0, 233, 188, 0.54);
+  -moz-box-shadow: -1px 0px 5px 4px rgba(0, 233, 188, 0.54);
+}
+
+.dropdown-toggle:hover {
+  background-color: transparent;
+  color: #ff5783;
+}
+
+.dropdown-toggle:active {
+  color: red !important;
+}
+
+.dropdown-toggle[aria-expanded="true"] {
+  background: transparent !important;
+  color: #ff5783 !important;
+  border: none !important;
+  box-shadow: -1px 0px 3px 2px rgba(0, 233, 188, 0.54) !important;
+  -webkit-box-shadow: -1px 0px 5px 6px rgba(0, 233, 188, 0.54) !important;
+  -moz-box-shadow: -1px 0px 5px 4px rgba(0, 233, 188, 0.54) !important;
+}
+
+.dropdown-item {
+  font-size: 20px;
+  color: #ececec;
+}
+
+.dropdown-item:hover {
+  background-color: #1f2022;
+  color: #ff5783;
+}

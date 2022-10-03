@@ -1,0 +1,59 @@
+input {
+  color: #1ce5be !important;
+}
+
+.form-label {
+  color: #ececec;
+}
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+.form-control:focus ~ .form-notch div {
+  border-color: #1ce5be !important;
+}
+
+.form-control:focus ~ .form-label {
+  color: #1ce5be !important;
+}
+
+.logo {
+  width: 250px;
+}
+
+.hopp-logo {
+  border-radius: 12px;
+}
+
+.title {
+  padding-top: 12px;
+  color: #ececec;
+}
+
+.form-logo,
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 12px;
+}
+
+.btn {
+  color: #ececec;
+  box-shadow: inset;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.btn:hover {
+  color: #1ce5be;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #1ce5be;
+}
+
+@media only screen and (max-width: 600px) {
+}
