@@ -1,0 +1,73 @@
+.hopp-logo {
+  width: 55px;
+}
+
+.form-label {
+  color: #ececec;
+}
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: red;
+}
+
+.form-control {
+  background-color: transparent;
+  border-color: #1ce5be;
+  color: #1ce5be;
+}
+
+.form-control:focus {
+  background-color: transparent;
+  border-color: #1ce5be !important;
+}
+
+.logo {
+  width: 250px;
+}
+
+.hopp-logo {
+  border-radius: 12px;
+}
+
+.title {
+  padding-top: 12px;
+  color: #ececec;
+}
+
+.form-logo,
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 12px;
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-btn {
+  background-color: transparent;
+  border: 1px solid #1ce5be;
+  color: #ececec;
+  box-shadow: inset;
+  font-size: 20px;
+  padding: 12px 35px;
+  border-radius: 7px;
+}
+
+.btn:hover {
+  background-color: transparent;
+  color: #1ce5be;
+  border: 1px solid #1ce5be;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #1ce5be !important;
+}
+
+@media only screen and (max-width: 600px) {
+}

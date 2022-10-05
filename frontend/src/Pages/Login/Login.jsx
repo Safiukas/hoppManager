@@ -1,70 +1,53 @@
+import "./Login.css";
+import FormLabel from "react-bootstrap/esm/FormLabel";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 const loginImage = require("../../Assets/Images/login-image.jpg");
 const hoppLogo = require("../../Assets/Images/logo.jpg");
-import "../../Assets/Styles/Login.css";
 
 const Login = () => {
   return (
-    <section class="vh-100">
-      <div class="container py-5 h-100">
-        <div class="row d-flex align-items-center justify-content-center h-100">
-          <div class="logo col-md-8 col-lg-7 col-xl-6">
-            <img src={loginImage} class="img-fluid" alt="Hopp background" />
+    <section className="vh-100">
+      <div className="container py-5 h-100">
+        <div className="row d-flex align-items-center justify-content-center h-100">
+          <div className="logo col-md-8 col-lg-7 col-xl-6">
+            <img src={loginImage} className="img-fluid" alt="Hopp background" />
           </div>
 
-          <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-            <div class="form-logo">
-              <img
-                src={hoppLogo}
-                class="hopp-logo"
-                alt="Hopp Logo"
-                width="55px"
-              />
+          <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+            <div className="form-logo">
+              <img src={hoppLogo} className="hopp-logo" alt="Hopp Logo" />
             </div>
 
-            <h4 class="title">Log In</h4>
+            <h4 className="title">Log In</h4>
 
-            <form action="/login" method="POST">
-              <div class="form-outline mb-4">
-                <input
+            {/* React Form */}
+            <Form>
+              <Form.Group className="form-outline mb-4">
+                <FormLabel className="form-label">Email address</FormLabel>
+                <Form.Control
+                  className="form-control shadow-none"
                   type="email"
-                  autocomplete="chrome-off"
-                  id="form1Example13"
-                  class="form-control form-control-lg"
-                  name="email"
+                  placeholder="Enter email"
                 />
-                <label
-                  class="form-label"
-                  style="color: #ececec"
-                  for="form1Example13"
-                >
-                  Email address
-                </label>
-              </div>
+              </Form.Group>
 
-              <div class="form-outline mb-4">
-                <input
+              <Form.Group className="form-outline mb-4">
+                <FormLabel className="form-label">Password</FormLabel>
+                <Form.Control
+                  className="form-control shadow-none"
                   type="password"
-                  id="form1Example23"
-                  class="form-control form-control-lg"
-                  name="password"
+                  placeholder="Enter password"
                 />
-                <label
-                  class="form-label"
-                  style="color: #ececec; border-color: #1ce5be"
-                  for="form1Example23"
-                >
-                  Password
-                </label>
+              </Form.Group>
+
+              <div className="btn-container">
+                <Button className="login-btn shadow-none" type="submit">
+                  Login
+                </Button>
               </div>
-
-              <button type="submit" class="btn btn-lg btn-block">
-                Sign in
-              </button>
-
-              <button type="button" class="btn btn-lg btn-block">
-                Sign Up
-              </button>
-            </form>
+            </Form>
+            {/* End of React Form */}
           </div>
         </div>
       </div>
