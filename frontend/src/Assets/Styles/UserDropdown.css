@@ -11,6 +11,7 @@
 }
 
 .dropdown-toggle {
+  border-color: none;
   color: #ff5783;
   margin-right: 20px;
   background-color: transparent;
@@ -31,10 +32,6 @@
 .dropdown-toggle:hover {
   background-color: transparent;
   color: #ff5783;
-}
-
-.dropdown-toggle:active {
-  color: red !important;
 }
 
 .dropdown-toggle[aria-expanded="true"] {

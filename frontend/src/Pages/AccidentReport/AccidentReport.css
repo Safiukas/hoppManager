@@ -1,0 +1,24 @@
+.title {
+  text-transform: uppercase;
+}
+
+.tab {
+  padding: 15px 100px;
+}
+
+.icon {
+  color: #ff5783;
+  font-size: 2.2rem;
+  margin-right: 25px;
+}
+
+.icon-container {
+  border: 1px solid red;
+}
+
+.input-container {
+  border: 1px solid green;
+}
+
+.form-group {
+}

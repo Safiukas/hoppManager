@@ -6,14 +6,6 @@
   color: #ececec;
 }
 
-.divider:after,
-.divider:before {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: red;
-}
-
 .form-control {
   background-color: transparent;
   border-color: #1ce5be;
@@ -23,6 +15,7 @@
 .form-control:focus {
   background-color: transparent;
   border-color: #1ce5be !important;
+  color: #1ce5be;
 }
 
 .logo {
@@ -58,7 +51,7 @@
   color: #ececec;
   box-shadow: inset;
   font-size: 20px;
-  padding: 12px 35px;
+  padding: 5px 35px;
   border-radius: 7px;
 }
 

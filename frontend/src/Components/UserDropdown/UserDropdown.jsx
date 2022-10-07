@@ -3,7 +3,7 @@ import "../../Assets/Styles/UserDropdown.css";
 
 const UserDropdown = () => {
   return (
-    <Dropdown>
+    <Dropdown className="shadow-none">
       <Dropdown.Toggle className="dropdown-toggle" id="dropdown-basic">
         Username
       </Dropdown.Toggle>

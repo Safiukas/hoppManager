@@ -1,5 +1,5 @@
+import "./Header.css";
 import logo from "./../../Assets/Images/main-logo.jpg";
-import "../../Assets/Styles/Header.css";
 import UserDropdown from "../../Components/UserDropdown/UserDropdown";
 
 export const Header = () => {

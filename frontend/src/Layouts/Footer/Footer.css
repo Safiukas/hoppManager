@@ -1,9 +1,16 @@
 .footer {
   color: #ececec;
+  opacity: 0.2;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: center;
   width: 100%;
   background-color: transparent;
+}
+
+.creator {
+  margin-left: 7px;
+  color: #ececec;
+  opacity: 0.3;
 }
