@@ -1,8 +1,18 @@
-const express = require("express");
+import express from "express";
+import {
+  createAccidentReport,
+  createShiftReport,
+} from "../controllers/captainHome.js";
+import { verifyToken } from "./../middleware/verifyToken.js";
+
 const router = express.Router();
 
-const { protect } = require("../middleware/authMiddleware");
+//Create Accident Report
+router.post("/accidentReport", verifyToken, createAccidentReport);
 
-router.route("/home").get(protect, getHome);
+//Create Shift Report
+router.post("/shiftReport", verifyToken, createShiftReport);
 
-module.exports = router;
+//Create Daily Car Report
+
+export default router;

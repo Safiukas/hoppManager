@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const ShiftReportSchema = new mongoose.Schema({
   hopper: {
@@ -38,4 +38,4 @@ const ShiftReportSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("ShiftReport", ShiftReportSchema);
+export default mongoose.model("ShiftReport", ShiftReportSchema);

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const DailyCarReportSchema = new mongoose.Schema({
   licensePlate: {
@@ -31,4 +31,4 @@ const DailyCarReportSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("DailyCarReport", DailyCarReportSchema);
+export default mongoose.model("DailyCarReport", DailyCarReportSchema);

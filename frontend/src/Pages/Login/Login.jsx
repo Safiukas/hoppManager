@@ -1,4 +1,15 @@
 import "./Login.css";
+import axios from "axios";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {
+  loginFailure,
+  loginStart,
+  loginSuccess,
+} from "../../Features/Auth/authSlice";
+
+// UI imports
 import FormLabel from "react-bootstrap/esm/FormLabel";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -6,6 +17,24 @@ const loginImage = require("../../Assets/Images/login-image.jpg");
 const hoppLogo = require("../../Assets/Images/logo.jpg");
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    dispatch(loginStart());
+    try {
+      const res = await axios.post("/auth/login", { email, password });
+
+      dispatch(loginSuccess(res.data));
+      navigate("/home");
+    } catch (err) {
+      dispatch(loginFailure());
+    }
+  };
+
   return (
     <section className="vh-100">
       <div className="container py-5 h-100">
@@ -22,13 +51,18 @@ const Login = () => {
             <h4 className="title">Log In</h4>
 
             {/* React Form */}
-            <Form>
+            <Form onSubmit={handleLogin}>
               <Form.Group className="form-outline mb-4">
                 <FormLabel className="form-label">Email address</FormLabel>
                 <Form.Control
                   className="form-control shadow-none"
                   type="email"
                   placeholder="Enter email"
+                  id="email"
+                  name="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  autoComplete="off"
+                  required
                 />
               </Form.Group>
 
@@ -38,6 +72,10 @@ const Login = () => {
                   className="form-control shadow-none"
                   type="password"
                   placeholder="Enter password"
+                  id="password"
+                  name="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </Form.Group>
 

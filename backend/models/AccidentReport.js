@@ -1,10 +1,9 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const AccidentSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
+  userId: {
+    type: String,
     required: true,
-    ref: "User",
   },
   employee: {
     type: String,
@@ -24,4 +23,4 @@ const AccidentSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Accident", AccidentSchema);
+export default mongoose.model("Accident", AccidentSchema);

@@ -1,36 +1,41 @@
-const jwt = require("jsonwebtoken");
-const asyncHandler = require("express-async-handler");
-const User = require("../models/User");
+import mongoose from "mongoose";
+import jwt from "jsonwebtoken";
+import User from "../models/User.js";
+import bcrypt from "bcryptjs";
+import { createError } from "./errorMiddleware.js";
 
-const protect = asyncHandler(async (req, res, next) => {
-  let token;
+export const signup = async (req, res, next) => {
+  try {
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(req.body.password, salt);
+    const newUser = new User({ ...req.body, password: hash });
 
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith("Bearer")
-  ) {
-    try {
-      // Get token from header
-      token = req.headers.authorization.split(" ")[1];
-
-      // Verify token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-      // Get user from the token
-      req.user = await User.findById(decoded.id).select("-password");
-
-      next();
-    } catch (error) {
-      console.log(error);
-      res.status(401);
-      throw new Error("Not authorized");
-    }
+    await newUser.save();
+    res.status(200).send("User has been created!");
+  } catch (err) {
+    next(err);
   }
+};
 
-  if (!token) {
-    res.status(401);
-    throw new Error("Not authorized, no token");
+export const signin = async (req, res, next) => {
+  try {
+    const user = await User.findOne({ name: req.body.name });
+    if (!user) return next(createError(404, "User not found!"));
+
+    const isCorrect = await bcrypt.compare(req.body.password, user.password);
+
+    if (!isCorrect) return next(createError(400, "Wrong Credentials!"));
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT);
+    const { password, ...others } = user._doc;
+
+    res
+      .cookie("access_token", token, {
+        httpOnly: true,
+      })
+      .status(200)
+      .json(others);
+  } catch (err) {
+    next(err);
   }
-});
-
-module.exports = { protect };
+};
