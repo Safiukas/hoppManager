@@ -1,7 +1,6 @@
 import "./AccidentReport.css";
 import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
 import Form from "react-bootstrap/Form";
-import { MdCancel } from "react-icons/md";
 import { Header } from "../../Layouts/Header/Header";
 import { Footer } from "../../Layouts/Footer/Footer";
 import Button from "react-bootstrap/esm/Button";

@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../../Features/Auth/authSlice";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -28,9 +28,7 @@ const UserDropdown = () => {
       <Dropdown.Menu className="dropdown-menu">
         <Dropdown.Item path="">My Rating</Dropdown.Item>
         <Dropdown.Item path="">Settings</Dropdown.Item>
-        <Dropdown.Item onClick={handleLogOut} path="">
-          Log Out
-        </Dropdown.Item>
+        <Dropdown.Item onClick={handleLogOut}>Log Out</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

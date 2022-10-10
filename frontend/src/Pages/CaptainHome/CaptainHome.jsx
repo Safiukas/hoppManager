@@ -1,7 +1,5 @@
-// import "./CaptainHome.css";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import "./CaptainHome.css";
+// import { Link } from "react-router-dom";
 import HomeNav from "../../Components/HomeNav/HomeNav";
 import {
   FaNewspaper,
@@ -15,16 +13,6 @@ import { Header } from "../../Layouts/Header/Header";
 import { Footer } from "../../Layouts/Footer/Footer";
 
 const CaptainHome = () => {
-  const navigate = useNavigate();
-
-  const { user } = useSelector((state) => state.auth);
-
-  useEffect(() => {
-    if (!user) {
-      navigate("/");
-    }
-  }, [user, navigate]);
-
   return (
     <div className="container h-100" id="menu-container">
       <Header />
@@ -32,7 +20,9 @@ const CaptainHome = () => {
         <HomeNav title="News & Feed" icon={<FaNewspaper />} />
         <HomeNav title="Daily car report" icon={<FaCar />} />
         <HomeNav title="Shift report" icon={<FaFlag />} />
+
         <HomeNav title="Accident report" icon={<FaExclamationTriangle />} />
+
         <HomeNav title="Cargo vehicles" icon={<FaTruck />} />
         <HomeNav title="Tasks" icon={<BiTask />} />
       </div>
