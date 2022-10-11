@@ -1,13 +1,8 @@
 import "./Login.css";
-import axios from "axios";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {
-  loginFailure,
-  loginStart,
-  loginSuccess,
-} from "../../Features/Auth/authSlice";
+import { login, reset } from "../../Features/Auth/authSlice";
 
 // UI imports
 import FormLabel from "react-bootstrap/esm/FormLabel";
@@ -17,22 +12,48 @@ const loginImage = require("../../Assets/Images/login-image.jpg");
 const hoppLogo = require("../../Assets/Images/logo.jpg");
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = formData;
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    dispatch(loginStart());
-    try {
-      const res = await axios.post("/auth/login", { email, password });
+  const { user, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
 
-      dispatch(loginSuccess(res.data));
-      navigate("/home");
-    } catch (err) {
-      dispatch(loginFailure());
+  useEffect(() => {
+    if (isError) {
+      console.log("Invalid email or password");
     }
+
+    if (isSuccess || user) {
+      navigate("/home");
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const userData = {
+      email,
+      password,
+    };
+
+    dispatch(login(userData));
   };
 
   return (
@@ -51,7 +72,7 @@ const Login = () => {
             <h4 className="title">Log In</h4>
 
             {/* React Form */}
-            <Form onSubmit={handleLogin}>
+            <Form onSubmit={onSubmit}>
               <Form.Group className="form-outline mb-4">
                 <FormLabel className="form-label">Email address</FormLabel>
                 <Form.Control
@@ -60,7 +81,8 @@ const Login = () => {
                   placeholder="Enter email"
                   id="email"
                   name="email"
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                  onChange={onChange}
                   autoComplete="off"
                   required
                 />
@@ -74,7 +96,8 @@ const Login = () => {
                   placeholder="Enter password"
                   id="password"
                   name="password"
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                  onChange={onChange}
                   required
                 />
               </Form.Group>

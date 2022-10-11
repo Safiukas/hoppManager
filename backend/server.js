@@ -1,11 +1,11 @@
 import express from "express";
-import mongoose from "mongoose";
+import cors from "cors";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.js";
 import homeRoutes from "./routes/captainHome.js";
-import { verifyToken } from "./middleware/verifyToken.js";
+import { protect } from "./middleware/verifyToken.js";
 
 const app = express();
 dotenv.config();
@@ -13,6 +13,8 @@ dotenv.config();
 //Middleware
 app.use(cookieParser());
 app.use(express.json());
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 
 //error handler
 app.use((err, req, res, next) => {
@@ -27,7 +29,7 @@ app.use((err, req, res, next) => {
 
 // Routes
 app.use("/api/auth", authRoutes);
-app.use("/api/home", verifyToken, homeRoutes);
+app.use("/api/home", protect, homeRoutes);
 
 const PORT = process.env.PORT;
 

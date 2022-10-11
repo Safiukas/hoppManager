@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logOut } from "../../Features/Auth/authSlice";
+import { logout } from "../../Features/Auth/authSlice";
 import Dropdown from "react-bootstrap/Dropdown";
 import "../../Assets/Styles/UserDropdown.css";
 
@@ -12,7 +12,7 @@ const UserDropdown = () => {
 
   const handleLogOut = async (e) => {
     try {
-      dispatch(logOut());
+      dispatch(logout());
       navigate("/");
     } catch (err) {
       console.log(err);

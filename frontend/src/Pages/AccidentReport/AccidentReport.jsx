@@ -1,11 +1,34 @@
+import Axios from "axios";
 import "./AccidentReport.css";
 import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { Header } from "../../Layouts/Header/Header";
 import { Footer } from "../../Layouts/Footer/Footer";
 import Button from "react-bootstrap/esm/Button";
+import { useState } from "react";
 
 const AccidentReport = () => {
+  const [employee, setEmployee] = useState(null);
+  const [location, setLocation] = useState("");
+  const [accident, setAccident] = useState("");
+
+  const changeEmployee = (e) => {
+    setEmployee(e.target.value);
+  };
+
+  const handleLocationChange = (e) => {
+    setLocation(e.target.value);
+    console.log(e.target.value);
+  };
+
+  const submitAccident = () => {
+    Axios.post("http://localhost:3000/home/accidentReport/create", {
+      employee,
+      location,
+      accident,
+    });
+  };
+
   return (
     <div>
       {/* Header */}
@@ -26,11 +49,14 @@ const AccidentReport = () => {
               <Form.Select
                 className="form-select shadow-none"
                 aria-label="Injured person name"
+                name="employee"
+                value={employee}
+                onChange={changeEmployee}
               >
                 <option>Select employee</option>
-                <option value="1">Mike</option>
-                <option value="2">Sandra</option>
-                <option value="3">Ralph</option>
+                <option value="Mike">Mike</option>
+                <option value="Sandra">Sandra</option>
+                <option value="Ralph">Ralph</option>
               </Form.Select>
             </Form.Group>
           </div>
@@ -44,8 +70,10 @@ const AccidentReport = () => {
                 <Form.Control
                   as="textarea"
                   className="text-area shadow-none"
-                  placeholder="Leave a comment here"
                   style={{ height: "150px" }}
+                  name="whatHappen"
+                  value={location}
+                  onChange={handleLocationChange}
                 />
               </FloatingLabel>
             </Form.Group>
@@ -60,15 +88,21 @@ const AccidentReport = () => {
                 <Form.Control
                   as="textarea"
                   className="text-area shadow-none"
-                  placeholder="Leave a comment here"
                   style={{ height: "150px" }}
+                  name="whereHappen"
+                  value={accident}
+                  onChange={(e) => {
+                    setAccident(e.target.value);
+                  }}
                 />
               </FloatingLabel>
             </Form.Group>
           </div>
           <div className="btn-container">
             <Button className="btn">Cancel</Button>
-            <Button className="btn">Submit</Button>
+            <Button onClick={submitAccident} className="btn">
+              Submit
+            </Button>
           </div>
         </Form>
       </div>

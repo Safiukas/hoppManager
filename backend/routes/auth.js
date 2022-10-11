@@ -1,12 +1,14 @@
 import express from "express";
-import { signin } from "../middleware/authMiddleware.js";
+import { login } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
 // //CREATE A USER
 // router.post("/signup", signup)
 
-//SIGN IN
-router.post("/login", signin);
+//LOG IN
+//@Route POST /api/auth
+//@access Public
+router.post("/login", login);
 
 export default router;

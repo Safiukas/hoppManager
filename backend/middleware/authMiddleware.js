@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
@@ -17,12 +16,14 @@ export const signup = async (req, res, next) => {
   }
 };
 
-export const signin = async (req, res, next) => {
+export const login = async (req, res, next) => {
+  const { email, password } = req.body;
+
   try {
-    const user = await User.findOne({ name: req.body.name });
+    const user = await User.findOne({ email });
     if (!user) return next(createError(404, "User not found!"));
 
-    const isCorrect = await bcrypt.compare(req.body.password, user.password);
+    const isCorrect = await bcrypt.compare(password, user.password);
 
     if (!isCorrect) return next(createError(400, "Wrong Credentials!"));
 

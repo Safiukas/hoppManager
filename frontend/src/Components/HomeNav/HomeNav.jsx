@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./HomeNav.css";
 
 const HomeNav = (props) => {
@@ -7,7 +8,7 @@ const HomeNav = (props) => {
         <div className="txt">
           <h1>{props.title}</h1>
         </div>
-        <a>Continue</a>
+        <Link to={props.route}>Continue</Link>
         <div className="ico-card">
           <i>{props.icon}</i>
         </div>
