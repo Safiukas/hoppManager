@@ -28,7 +28,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isError) {
-      console.log("Invalid email or password");
+      console.log(message);
     }
 
     if (isSuccess || user) {

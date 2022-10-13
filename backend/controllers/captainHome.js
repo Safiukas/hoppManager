@@ -3,7 +3,6 @@ import ShiftReport from "../models/ShiftReport.js";
 import _ from "underscore";
 import upload from "../middleware/cloudinary.js";
 import fs from "fs";
-import { createError } from "../middleware/errorMiddleware.js";
 import DailyCarReport from "../models/DailyCarReport.js";
 
 export const createAccidentReport = async (req, res, next) => {

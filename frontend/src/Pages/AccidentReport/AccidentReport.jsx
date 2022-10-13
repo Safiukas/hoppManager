@@ -1,4 +1,3 @@
-import Axios from "axios";
 import "./AccidentReport.css";
 import FloatingLabel from "react-bootstrap/esm/FloatingLabel";
 import Form from "react-bootstrap/Form";
@@ -6,27 +5,25 @@ import { Header } from "../../Layouts/Header/Header";
 import { Footer } from "../../Layouts/Footer/Footer";
 import Button from "react-bootstrap/esm/Button";
 import { useState } from "react";
+import axios from "axios";
+
+const url = "http://localhost:3000/home/accidentReport";
 
 const AccidentReport = () => {
-  const [employee, setEmployee] = useState(null);
+  const [employee, setEmployee] = useState("");
   const [location, setLocation] = useState("");
   const [accident, setAccident] = useState("");
 
-  const changeEmployee = (e) => {
-    setEmployee(e.target.value);
-  };
-
-  const handleLocationChange = (e) => {
-    setLocation(e.target.value);
-    console.log(e.target.value);
-  };
-
-  const submitAccident = () => {
-    Axios.post("http://localhost:3000/home/accidentReport/create", {
-      employee,
-      location,
-      accident,
-    });
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(url, { employee, location, accident });
+      if (response) {
+        console.log("Data went through");
+      }
+    } catch (error) {
+      console.log("Data didn't go through" + error);
+    }
   };
 
   return (
@@ -40,7 +37,7 @@ const AccidentReport = () => {
 
       {/* Form container */}
       <div className="form-container">
-        <Form className="form-group">
+        <Form className="form-group" onSubmit={onSubmit}>
           <div className="tab">
             <Form.Group>
               <Form.Label className="form-label">
@@ -51,7 +48,9 @@ const AccidentReport = () => {
                 aria-label="Injured person name"
                 name="employee"
                 value={employee}
-                onChange={changeEmployee}
+                onChange={(e) => {
+                  setEmployee(e.target.value);
+                }}
               >
                 <option>Select employee</option>
                 <option value="Mike">Mike</option>
@@ -73,7 +72,9 @@ const AccidentReport = () => {
                   style={{ height: "150px" }}
                   name="whatHappen"
                   value={location}
-                  onChange={handleLocationChange}
+                  onChange={(e) => {
+                    setLocation(e.target.value);
+                  }}
                 />
               </FloatingLabel>
             </Form.Group>
@@ -100,7 +101,7 @@ const AccidentReport = () => {
           </div>
           <div className="btn-container">
             <Button className="btn">Cancel</Button>
-            <Button onClick={submitAccident} className="btn">
+            <Button className="btn" type="submit">
               Submit
             </Button>
           </div>

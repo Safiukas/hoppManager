@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import asyncHandler from "express-async-handler";
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import { createError } from "./errorMiddleware.js";
@@ -16,27 +17,42 @@ export const signup = async (req, res, next) => {
   }
 };
 
-export const login = async (req, res, next) => {
+// @desc    Authenticate a user
+// @route   POST /api/users/login
+// @access  Public
+export const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  try {
-    const user = await User.findOne({ email });
-    if (!user) return next(createError(404, "User not found!"));
+  // Check for user email
+  const user = await User.findOne({ email });
 
-    const isCorrect = await bcrypt.compare(password, user.password);
-
-    if (!isCorrect) return next(createError(400, "Wrong Credentials!"));
-
-    const token = jwt.sign({ id: user._id }, process.env.JWT);
-    const { password, ...others } = user._doc;
-
-    res
-      .cookie("access_token", token, {
-        httpOnly: true,
-      })
-      .status(200)
-      .json(others);
-  } catch (err) {
-    next(err);
+  if (user && (await bcrypt.compare(password, user.password))) {
+    res.json({
+      _id: user.id,
+      firstName: user.firstName,
+      email: user.email,
+      token: generateToken(user._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid credentials");
   }
+});
+
+// @desc    Get user data
+// @route   GET /api/users/me
+// @access  Private
+export const getMe = asyncHandler(async (req, res) => {
+  res.status(200).json(req.user);
+});
+
+// Generate JWT
+export const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT, {
+    expiresIn: "30d",
+  });
+};
+
+export default {
+  loginUser,
 };

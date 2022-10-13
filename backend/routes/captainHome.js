@@ -9,12 +9,12 @@ import { protect } from "./../middleware/verifyToken.js";
 const router = express.Router();
 
 //Create Accident Report
-router.post("/accidentReport/create", protect, createAccidentReport);
+router.post("/accidentReport", protect, createAccidentReport);
 
 //Create Shift Report
-router.post("/shiftReport/create", protect, createShiftReport);
+router.post("/shiftReport", protect, createShiftReport);
 
 //Create Daily Car Report
-router.post("/caraReport/create", protect, createCarReport);
+router.post("/caraReport", protect, createCarReport);
 
 export default router;

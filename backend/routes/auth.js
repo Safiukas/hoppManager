@@ -1,5 +1,5 @@
 import express from "express";
-import { login } from "../middleware/authMiddleware.js";
+import { loginUser } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -9,6 +9,6 @@ const router = express.Router();
 //LOG IN
 //@Route POST /api/auth
 //@access Public
-router.post("/login", login);
+router.post("/login", loginUser);
 
 export default router;
