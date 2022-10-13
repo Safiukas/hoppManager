@@ -9,7 +9,8 @@ export const createAccidentReport = async (req, res, next) => {
   const newAccidentReport = new AccidentReport({
     userId: req.user.id,
     employee: req.body.employee,
-    ...req.body,
+    whatHappen: req.body.accident,
+    whereHappen: req.body.location,
   });
   try {
     const savedAccident = await newAccidentReport.save();
@@ -23,7 +24,13 @@ export const createAccidentReport = async (req, res, next) => {
 export const createShiftReport = async (req, res, next) => {
   const newShiftReport = new ShiftReport({
     userId: req.userId,
-    ...req.body,
+    hopper: req.body.hopper,
+    batteries: req.body.batteries,
+    hoppHikes: req.body.hoppHikes,
+    fixed: req.body.fixed,
+    leftMtc: req.body.leftMtc,
+    rebalance: req.body.rebalance,
+    comments: req.body.comments,
   });
   try {
     const savedShiftReport = await newShiftReport.save();

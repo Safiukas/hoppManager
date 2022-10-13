@@ -1,6 +1,10 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const ShiftReportSchema = new mongoose.Schema({
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
   hopper: {
     type: String,
     required: true,
@@ -27,10 +31,6 @@ const ShiftReportSchema = new mongoose.Schema({
   },
   comments: {
     type: String,
-  },
-  userId: {
-    type: String,
-    required: true,
   },
   createdAt: {
     type: Date,

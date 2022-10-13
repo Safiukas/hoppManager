@@ -36,7 +36,11 @@ const CaptainHome = () => {
           title="Daily car report"
           icon={<FaCar />}
         />
-        <HomeNav title="Shift report" icon={<FaFlag />} />
+        <HomeNav
+          title="Shift report"
+          route="/home/shiftReport"
+          icon={<FaFlag />}
+        />
         <HomeNav
           route="/home/accidentReport"
           title="Accident report"

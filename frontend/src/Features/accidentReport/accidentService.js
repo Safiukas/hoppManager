@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "/api/home/";
+const API_URL = "/api/home/accidentReport";
 
 // Create new accident report
 const createAccidentReport = async (accidentData, token) => {

@@ -1,21 +1,21 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import accidentService from "./accidentService";
+import shiftReportService from "./shiftReportService";
 
 const initialState = {
-  accidents: [],
+  shiftReports: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
   message: "",
 };
 
-// Create new accident report
-export const createAccident = createAsyncThunk(
-  "home/create",
-  async (accidentData, thunkAPI) => {
+// Create new shift report
+export const createShiftReport = createAsyncThunk(
+  "home/shiftReport/create",
+  async (shiftReportData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await accidentService.createAccidentReport(accidentData, token);
+      return await shiftReportService.createShiftReport(shiftReportData, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -28,23 +28,23 @@ export const createAccident = createAsyncThunk(
   }
 );
 
-export const accidentSlice = createSlice({
-  name: "accident",
+export const shiftSlice = createSlice({
+  name: "shiftReport",
   initialState,
   reducers: {
     reset: (state) => initialState,
   },
   extraReducers: (builder) => {
     builder
-      .addCase(createAccident.pending, (state) => {
+      .addCase(createShiftReport.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(createAccident.fulfilled, (state, action) => {
+      .addCase(createShiftReport.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.accidents.push(action.payload);
+        state.shiftReports.push(action.payload);
       })
-      .addCase(createAccident.rejected, (state, action) => {
+      .addCase(createShiftReport.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
@@ -52,5 +52,5 @@ export const accidentSlice = createSlice({
   },
 });
 
-export const { reset } = accidentSlice.actions;
-export default accidentSlice.reducer;
+export const { reset } = shiftSlice.actions;
+export default shiftSlice.reducer;
