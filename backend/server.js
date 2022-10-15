@@ -4,6 +4,7 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.js";
 import homeRoutes from "./routes/captainHome.js";
+import dashboardRoutes from "./routes/dashboard.js";
 import { protect } from "./middleware/verifyToken.js";
 
 const app = express();
@@ -28,6 +29,7 @@ app.use((err, req, res, next) => {
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/home", protect, homeRoutes);
+app.use("/api/dashboard", protect, dashboardRoutes);
 
 const PORT = process.env.PORT;
 

@@ -48,6 +48,7 @@ const CaptainHome = () => {
         />
         <HomeNav title="Cargo vehicles" icon={<FaTruck />} />
         <HomeNav title="Tasks" icon={<BiTask />} />
+        <HomeNav title="Dashboard" route="/dashboard" icon={<BiTask />} />
       </div>
       <Footer />
     </div>

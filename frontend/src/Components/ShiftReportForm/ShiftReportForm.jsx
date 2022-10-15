@@ -14,6 +14,18 @@ const ShiftReportForm = () => {
   const [rebalance, setRebalance] = useState("");
   const [comments, setComments] = useState("");
 
+  const [formData, setFormData] = useState([
+    {
+      hopper: "",
+      batteries: 0,
+      hoppHikes: 0,
+      fixed: 0,
+      leftMtc: 0,
+      rebalance: 0,
+      comments: "",
+    },
+  ]);
+
   const dispatch = useDispatch();
 
   const onSubmit = (e) => {
@@ -52,9 +64,9 @@ const ShiftReportForm = () => {
                 className="form-select shadow-none"
                 aria-label="Injured person name"
                 name="hopper"
-                value={hopper}
+                value={formData.hopper}
                 onChange={(e) => {
-                  setHopper(e.target.value);
+                  setFormData.hopper(e.target.value);
                 }}
               >
                 <option>Select employee</option>
@@ -64,7 +76,7 @@ const ShiftReportForm = () => {
               </Form.Select>
             </Form.Group>
           </div>
-          {/* ---2--- */}
+
           <div className="tab">
             <Form.Group>
               <Form.Label className="form-label">Batteries changed:</Form.Label>
@@ -73,14 +85,14 @@ const ShiftReportForm = () => {
                 type="number"
                 placeholder="11"
                 name="batteries"
-                value={batteries}
+                value={formData.batteries}
                 onChange={(e) => {
-                  setBatteries(e.target.value);
+                  setFormData.batteries(e.target.value);
                 }}
               />
             </Form.Group>
           </div>
-          {/* ---3--- */}
+
           <div className="tab">
             <Form.Group>
               <Form.Label className="form-label">Hopp hikes:</Form.Label>
@@ -89,14 +101,14 @@ const ShiftReportForm = () => {
                 type="number"
                 placeholder="5"
                 name="hoppHikes"
-                value={hoppHikes}
+                value={formData.hoppHikes}
                 onChange={(e) => {
-                  setHoppHikes(e.target.value);
+                  setFormData.hoppHikes(e.target.value);
                 }}
               />
             </Form.Group>
           </div>
-          {/* ---4--- */}
+
           <div className="tab">
             <Form.Group>
               <Form.Label className="form-label">
@@ -107,14 +119,14 @@ const ShiftReportForm = () => {
                 type="number"
                 placeholder="15"
                 name="fixed"
-                value={fixed}
+                value={formData.fixed}
                 onChange={(e) => {
-                  setFixed(e.target.value);
+                  setFormData.fixed(e.target.value);
                 }}
               />
             </Form.Group>
           </div>
-          {/* ---5--- */}
+
           <div className="tab">
             <Form.Group>
               <Form.Label className="form-label">
@@ -125,14 +137,14 @@ const ShiftReportForm = () => {
                 type="number"
                 placeholder="15"
                 name="leftMtc"
-                value={leftMtc}
+                value={formData.leftMtc}
                 onChange={(e) => {
-                  setLeftMtc(e.target.value);
+                  setFormData.leftMtc(e.target.value);
                 }}
               />
             </Form.Group>
           </div>
-          {/* ---6--- */}
+
           <div className="tab">
             <Form.Group>
               <Form.Label className="form-label">
@@ -141,27 +153,27 @@ const ShiftReportForm = () => {
               <Form.Control
                 className="shadow-none"
                 type="number"
-                placeholder="15"
+                placeholder="0"
                 name="rebalance"
-                value={rebalance}
+                value={formData.rebalance}
                 onChange={(e) => {
-                  setRebalance(e.target.value);
+                  setFormData.rebalance(e.target.value);
                 }}
               />
             </Form.Group>
           </div>
-          {/* ---6--- */}
+
           <div className="tab">
             <Form.Group>
               <Form.Label className="form-label">Comments:</Form.Label>
               <Form.Control
                 className="shadow-none"
                 type="text"
-                placeholder="15"
+                placeholder="Write comment here.."
                 name="comments"
-                value={comments}
+                value={formData.comments}
                 onChange={(e) => {
-                  setComments(e.target.value);
+                  setFormData.comments(e.target.value);
                 }}
               />
             </Form.Group>

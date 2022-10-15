@@ -11,6 +11,7 @@ import ShiftReport from "./Pages/ShiftReport/ShiftReport";
 import Login from "./Pages/Login/Login";
 import Root from "./Pages/Root/Root";
 import DailyCarReport from "./Pages/DailyCarReport/DailyCarReport";
+import { Dashboard } from "./Pages/Dashboard/Dashboard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
         <Route path="carReport" element={<DailyCarReport />} />
         <Route path="shiftReport" element={<ShiftReport />} />
       </Route>
+      <Route path="/dashboard" element={<Dashboard />} />
     </Route>
   )
 );

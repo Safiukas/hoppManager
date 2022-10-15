@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const UserSchema = new mongoose.Schema({
   firstName: {
@@ -13,14 +13,32 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  accessLevel: {
+  role: {
     type: String,
-    default: "Captain",
+    required: true,
   },
   password: {
     type: String,
     required: true,
   },
+  shiftReports: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "ShiftReport",
+    },
+  ],
+  accidentReports: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Accident",
+    },
+  ],
+  dailyCarReports: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "DailyCarReport",
+    },
+  ],
 });
 
 export default mongoose.model("User", UserSchema);

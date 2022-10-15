@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../Features/Auth/authSlice";
 import Dropdown from "react-bootstrap/Dropdown";
 import "../../Assets/Styles/UserDropdown.css";
@@ -26,8 +26,11 @@ const UserDropdown = () => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu className="dropdown-menu">
-        <Dropdown.Item path="">My Rating</Dropdown.Item>
-        <Dropdown.Item path="">Settings</Dropdown.Item>
+        <Link to="/dashboard">
+          <Dropdown.Item>Dashboard</Dropdown.Item>
+        </Link>
+        <Dropdown.Item>My Rating</Dropdown.Item>
+        <Dropdown.Item>Settings</Dropdown.Item>
         <Dropdown.Item onClick={handleLogOut}>Log Out</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
