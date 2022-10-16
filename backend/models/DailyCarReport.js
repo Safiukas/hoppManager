@@ -13,7 +13,11 @@ const DailyCarReportSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  checkList: {
+  generalCheck: {
+    type: [String],
+    require: true,
+  },
+  serviceCheck: {
     type: [String],
     require: true,
   },

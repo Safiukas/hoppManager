@@ -1,0 +1,15 @@
+#custom-switch + label {
+  color: #00e9bc;
+}
+
+#custom-switch {
+  box-shadow: none;
+}
+
+#custom-switch {
+  background-color: #ececec;
+}
+
+#custom-switch:checked {
+  background-color: #f7427f;
+}

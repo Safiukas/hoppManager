@@ -45,7 +45,10 @@ export const createCarReport = async (req, res, next) => {
   const files = req.files;
   const newCarReport = new DailyCarReport({
     userId: req.userId,
-    ...req.body,
+    mileage: req.body.mileage,
+    generalCheck: req.body.generalCheck,
+    serviceCheck: req.body.serviceCheck,
+    // TODO: add cloudinary image upload
   });
   try {
     //upload image to cloudinary

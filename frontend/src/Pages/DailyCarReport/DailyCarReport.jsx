@@ -1,4 +1,5 @@
 import React from "react";
+import DailyCarForm from "../../Components/DailyCarForm/DailyCarForm";
 import { Footer } from "../../Layouts/Footer/Footer";
 import { Header } from "../../Layouts/Header/Header";
 
@@ -7,7 +8,7 @@ const DailyCarReport = () => {
     <>
       <Header />
       <div>
-        <h1>Daily Car Report</h1>
+        <DailyCarForm />
       </div>
       <Footer />
     </>

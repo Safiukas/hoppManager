@@ -66,7 +66,7 @@ const ShiftReportForm = () => {
                 name="hopper"
                 value={formData.hopper}
                 onChange={(e) => {
-                  setFormData.hopper(e.target.value);
+                  setHopper(e.target.value);
                 }}
               >
                 <option>Select employee</option>
@@ -87,7 +87,7 @@ const ShiftReportForm = () => {
                 name="batteries"
                 value={formData.batteries}
                 onChange={(e) => {
-                  setFormData.batteries(e.target.value);
+                  setBatteries(e.target.value);
                 }}
               />
             </Form.Group>
@@ -103,7 +103,7 @@ const ShiftReportForm = () => {
                 name="hoppHikes"
                 value={formData.hoppHikes}
                 onChange={(e) => {
-                  setFormData.hoppHikes(e.target.value);
+                  setHoppHikes(e.target.value);
                 }}
               />
             </Form.Group>
@@ -121,7 +121,7 @@ const ShiftReportForm = () => {
                 name="fixed"
                 value={formData.fixed}
                 onChange={(e) => {
-                  setFormData.fixed(e.target.value);
+                  setFixed(e.target.value);
                 }}
               />
             </Form.Group>
@@ -139,7 +139,7 @@ const ShiftReportForm = () => {
                 name="leftMtc"
                 value={formData.leftMtc}
                 onChange={(e) => {
-                  setFormData.leftMtc(e.target.value);
+                  setLeftMtc(e.target.value);
                 }}
               />
             </Form.Group>
@@ -157,7 +157,7 @@ const ShiftReportForm = () => {
                 name="rebalance"
                 value={formData.rebalance}
                 onChange={(e) => {
-                  setFormData.rebalance(e.target.value);
+                  setRebalance(e.target.value);
                 }}
               />
             </Form.Group>
@@ -173,7 +173,7 @@ const ShiftReportForm = () => {
                 name="comments"
                 value={formData.comments}
                 onChange={(e) => {
-                  setFormData.comments(e.target.value);
+                  setComments(e.target.value);
                 }}
               />
             </Form.Group>

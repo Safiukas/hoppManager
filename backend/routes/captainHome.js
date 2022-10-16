@@ -15,6 +15,6 @@ router.post("/accidentReport", protect, createAccidentReport);
 router.post("/shiftReport", protect, createShiftReport);
 
 //Create Daily Car Report
-router.post("/caraReport", protect, createCarReport);
+router.post("/carReport", protect, createCarReport);
 
 export default router;

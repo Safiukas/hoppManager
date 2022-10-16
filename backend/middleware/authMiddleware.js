@@ -49,7 +49,7 @@ export const getMe = asyncHandler(async (req, res) => {
 // Generate JWT
 export const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT, {
-    expiresIn: "60",
+    expiresIn: "1d",
   });
 };
 
