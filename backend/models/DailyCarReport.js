@@ -22,12 +22,14 @@ const DailyCarReportSchema = new mongoose.Schema({
     require: true,
   },
   images: {
-    type: [String],
-    require: true,
-  },
-  cloudinaryId: {
-    type: [String],
-    require: true,
+    public_id: {
+      type: String,
+      required: true,
+    },
+    url: {
+      type: String,
+      required: true,
+    },
   },
   userId: {
     type: String,

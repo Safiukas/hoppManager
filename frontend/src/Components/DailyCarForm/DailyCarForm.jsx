@@ -1,9 +1,10 @@
 import "./DailyCar.css";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { createShiftReport } from "../../Features/shiftReport/shiftReportSlice";
+import { createCarReport } from "../../Features/carReport/carReportSlice";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
+import { useEffect } from "react";
 
 const DailyCarForm = () => {
   const [licensePlate, setLicensePlate] = useState("");
@@ -27,11 +28,34 @@ const DailyCarForm = () => {
       floorMats: false,
     },
   ]);
+  const [images, setImages] = useState([]);
 
+  // Dropzone
+  const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
+    acceptedFiles.forEach((file) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setImages((prevState) => [...prevState, reader.result]);
+      };
+    });
+  }, []);
+
+  useEffect(() => {}, [images]);
+
+  // End of dropzone
   const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
+    dispatch(
+      createCarReport({
+        licensePlate,
+        mileage,
+        generalCheck,
+        serviceCheck,
+      })
+    );
   };
 
   return (
@@ -213,16 +237,25 @@ const DailyCarForm = () => {
 
           <div className="tab">
             <Form.Group>
-              <Form.Label className="form-label">Upload photos:</Form.Label>
-
-              {/* TODO: React-dropzone implement */}
-
+              <Form.Label>Upload photos:</Form.Label>
               <Form.Control
-                className="shadow-none"
-                type="number"
-                placeholder="15"
-                name="fixed"
+                className="image-input"
+                name="images"
+                type="file"
+                multiple
               />
+              {images.length > 0 && (
+                <div className="upload-container">
+                  {images.map((image, index) => (
+                    <img
+                      className="uploaded-images"
+                      alt="daily-car"
+                      src={image}
+                      key={index}
+                    />
+                  ))}
+                </div>
+              )}
             </Form.Group>
           </div>
 
