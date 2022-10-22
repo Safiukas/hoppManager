@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "/api/home/carReport";
+const API_URL = "/api/home/carReport/create";
 
 // create new shift report
 const createCarReport = async (carReportData, token) => {

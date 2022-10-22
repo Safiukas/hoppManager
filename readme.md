@@ -19,3 +19,29 @@ inactive scooters
 // Extra
 [] - interaction score
 [] - separate day/evening/night shift
+
+### PROGRESS
+
+[] Shift report
+---[x]POST shift report
+-----[]Handle errors
+-----[]Handle loading
+-----[]Handle success
+---[]GET shift reports
+-----[]Filtering by user ID
+-----[]GET all posts that was created that day
+-----[]Handle loading
+[] Accident report
+---[x]POST accident report
+-----[]Handle errors
+-----[]Handle loading
+-----[]Handle success
+---[]GET accident reports
+-----[]Handle loading
+[] Daily car report
+---[x]POST daily car report
+-----[]Handle errors
+-----[]Handle loading
+-----[]Handle success
+---[]GET daily car report
+-----[]Handle loading

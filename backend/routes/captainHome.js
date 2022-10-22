@@ -2,8 +2,8 @@ import express from "express";
 import {
   createAccidentReport,
   createShiftReport,
-  createCarReport,
 } from "../controllers/captainHome.js";
+import { createCarReport } from "../controllers/dailyCar.js";
 import { protect } from "./../middleware/verifyToken.js";
 
 const router = express.Router();
@@ -15,6 +15,6 @@ router.post("/accidentReport", protect, createAccidentReport);
 router.post("/shiftReport", protect, createShiftReport);
 
 //Create Daily Car Report
-router.post("/carReport", protect, createCarReport);
+router.post("/carReport/create", protect, createCarReport);
 
 export default router;
