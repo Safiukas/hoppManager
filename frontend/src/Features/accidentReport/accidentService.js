@@ -16,8 +16,22 @@ const createAccidentReport = async (accidentData, token) => {
   return response.data;
 };
 
+//Get accident reports
+const getAccidents = async (token) => {
+  //Get token
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get("/api/home/allAccidents", config);
+
+  return response.data;
+};
+
 const accidentService = {
   createAccidentReport,
+  getAccidents,
 };
 
 export default accidentService;

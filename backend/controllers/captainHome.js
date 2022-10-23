@@ -1,6 +1,7 @@
 import AccidentReport from "../models/AccidentReport.js";
 import ShiftReport from "../models/ShiftReport.js";
 import _, { result } from "underscore";
+import User from "../models/User.js";
 
 export const createAccidentReport = async (req, res, next) => {
   const newAccidentReport = new AccidentReport({
@@ -16,6 +17,13 @@ export const createAccidentReport = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+};
+
+export const getAccidentReports = async (req, res) => {
+  try {
+    const accidents = await AccidentReport.find().populate("userId");
+    res.status(200).json(accidents);
+  } catch (error) {}
 };
 
 export const createShiftReport = async (req, res, next) => {

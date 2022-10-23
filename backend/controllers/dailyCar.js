@@ -1,6 +1,7 @@
 import DailyCarReport from "../models/DailyCarReport.js";
 import Cloudinary from "../middleware/cloudinary.js";
 
+//POST daily car report
 export const createCarReport = async (req, res, next) => {
   const { userId, licensePlate, mileage, generalCheck, serviceCheck, images } =
     req.body;
@@ -32,11 +33,10 @@ export const createCarReport = async (req, res, next) => {
   }
 };
 
-// const newCarReport = new DailyCarReport({
-//   userId: req.userId,
-//   licensePlate: req.body.licensePlate,
-//   mileage: req.body.mileage,
-//   generalCheck: req.body.generalCheck,
-//   serviceCheck: req.body.serviceCheck,
-//   images: imagesBuffer,
-// });
+//GET daily car report
+export const getCarReport = async (req, res) => {
+  try {
+    const carReports = await DailyCarReport.find().populate("userId");
+    res.status(200).json(carReports);
+  } catch (error) {}
+};

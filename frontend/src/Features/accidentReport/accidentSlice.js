@@ -28,6 +28,25 @@ export const createAccident = createAsyncThunk(
   }
 );
 
+// Get accident reports
+export const getAccidents = createAsyncThunk(
+  "accidents/getAll",
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await accidentService.getAccidents(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const accidentSlice = createSlice({
   name: "accident",
   initialState,
@@ -45,6 +64,19 @@ export const accidentSlice = createSlice({
         state.accidents.push(action.payload);
       })
       .addCase(createAccident.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getAccidents.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAccidents.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.accidents = action.payload;
+      })
+      .addCase(getAccidents.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

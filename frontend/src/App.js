@@ -12,6 +12,7 @@ import Login from "./Pages/Login/Login";
 import Root from "./Pages/Root/Root";
 import DailyCarReport from "./Pages/DailyCarReport/DailyCarReport";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
+import AdminReports from "./Pages/AdminReports/AdminReports";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,7 +24,10 @@ const router = createBrowserRouter(
         <Route path="carReport" element={<DailyCarReport />} />
         <Route path="shiftReport" element={<ShiftReport />} />
       </Route>
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard">
+        <Route index element={<Dashboard />} />
+        <Route path="allReports" element={<AdminReports />} />
+      </Route>
     </Route>
   )
 );

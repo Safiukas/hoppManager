@@ -26,7 +26,7 @@ export const SidebarData = [
   },
   {
     title: "Reports",
-    path: "/reports",
+    path: "/dashboard/allReports",
     icon: <IoIcons.IoIosPaper />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,

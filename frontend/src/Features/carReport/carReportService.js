@@ -16,8 +16,22 @@ const createCarReport = async (carReportData, token) => {
   return response.data;
 };
 
+//GET car report
+const getCarReports = async (token) => {
+  //Get token
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get("/api/home/dashboard/allCarReports", config);
+
+  return response.data;
+};
+
 const carReportService = {
   createCarReport,
+  getCarReports,
 };
 
 export default carReportService;
