@@ -12,7 +12,6 @@ const ReportTable = () => {
 
   useEffect(() => {
     dispatch(getAccidents());
-    console.log(accidents.length);
   }, [dispatch, getAccidents]);
 
   // console.log(accidents.length);

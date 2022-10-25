@@ -1,5 +1,5 @@
 import React from "react";
-import CarReport from "../../Components/Table/Table";
+import CarReportTable from "../../Components/CarReportTable/CarReportTable";
 import Footer from "../../Layouts/Footer/Footer";
 import AdminHeader from "../../Layouts/Header/AdminHeader";
 
@@ -10,7 +10,7 @@ const AdminReports = () => {
         <AdminHeader />
       </header>
       <h3>All reports</h3>
-      <CarReport />
+      <CarReportTable />
       <Footer>
         <Footer />
       </Footer>

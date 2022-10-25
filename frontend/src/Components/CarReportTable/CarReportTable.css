@@ -1,0 +1,51 @@
+.table-container {
+  padding: 15px 0px;
+  margin: 15px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #ececec;
+  border: 1px ridge #1ce5be;
+  border-radius: 20px;
+}
+
+.title {
+  color: #ff5783;
+}
+
+.table-header {
+  border-bottom: 1px ridge #1ce5be;
+}
+
+.table-header th {
+  padding-bottom: 13px;
+  padding-right: 17px;
+  text-align: center;
+  color: #1ce5be;
+}
+
+.table-body {
+  border-bottom: 1px ridge #1ce5be;
+}
+
+.table-body td {
+  padding: 13px 0px;
+  padding-right: 15px;
+  text-align: center;
+}
+
+.view-container {
+  width: 100%;
+  margin-right: 25px;
+  padding: 15px 0px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+}
+
+.view-btn {
+  margin-top: 20px;
+  display: flex;
+  font-size: 17px;
+}

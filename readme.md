@@ -27,7 +27,7 @@ inactive scooters
 -----[]Handle errors
 -----[]Handle loading
 -----[]Handle success
----[]GET shift reports
+---[x]GET shift reports
 -----[]Filtering by user ID
 -----[]GET all posts that was created that day
 -----[]Handle loading
@@ -36,12 +36,12 @@ inactive scooters
 -----[]Handle errors
 -----[]Handle loading
 -----[]Handle success
----[]GET accident reports
+---[x]GET accident reports
 -----[]Handle loading
 [] Daily car report
 ---[x]POST daily car report
 -----[]Handle errors
 -----[]Handle loading
 -----[]Handle success
----[]GET daily car report
+---[x]GET daily car report
 -----[]Handle loading

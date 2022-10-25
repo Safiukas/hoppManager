@@ -30,7 +30,7 @@ export const createCarReport = createAsyncThunk(
 
 //GET car reports
 export const getCarReports = createAsyncThunk(
-  "carReports/getAll",
+  "/dashboard/allCarReports",
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
@@ -47,7 +47,7 @@ export const getCarReports = createAsyncThunk(
   }
 );
 
-export const cartReportSlice = createSlice({
+export const carReportSlice = createSlice({
   name: "carReport",
   initialState,
   reducers: {
@@ -84,5 +84,5 @@ export const cartReportSlice = createSlice({
   },
 });
 
-export const { reset } = cartReportSlice.actions;
-export default cartReportSlice.reducer;
+export const { reset } = carReportSlice.actions;
+export default carReportSlice.reducer;

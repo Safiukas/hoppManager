@@ -1,10 +1,12 @@
 import mongoose, { Schema } from "mongoose";
 
 const DailyCarReportSchema = new mongoose.Schema({
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-  },
+  userId: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
   licensePlate: {
     type: String,
     required: true,
