@@ -5,21 +5,21 @@ import * as RiIcons from "react-icons/ri";
 
 export const SidebarData = [
   {
-    title: "Overview",
-    path: "/overview",
+    title: "Team",
+    path: "/dashboard/team",
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
     subNav: [
       {
-        title: "Users",
-        path: "/overview/users",
+        title: "Hoppers",
+        path: "/dashboard/team/hoppers",
         icon: <IoIcons.IoIosPaper />,
       },
       {
-        title: "Revenue",
-        path: "/overview/revenue",
+        title: "Captains",
+        path: "/dashboard/team/captains",
         icon: <IoIcons.IoIosPaper />,
       },
     ],

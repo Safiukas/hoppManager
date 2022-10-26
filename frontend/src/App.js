@@ -13,6 +13,8 @@ import Root from "./Pages/Root/Root";
 import DailyCarReport from "./Pages/DailyCarReport/DailyCarReport";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import AdminReports from "./Pages/AdminReports/AdminReports";
+import Team from "./Pages/Team/Team";
+import CreateEmployee from "./Pages/CreateEmployee/CreateEmployee";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +29,12 @@ const router = createBrowserRouter(
       <Route path="/dashboard">
         <Route index element={<Dashboard />} />
         <Route path="allReports" element={<AdminReports />} />
+        <Route path="/dashboard/team">
+          <Route index element={<Team />} />
+          <Route path="hoppers" />
+          <Route path="captains" />
+          <Route path="createEmployee" element={<CreateEmployee />} />
+        </Route>
       </Route>
     </Route>
   )
