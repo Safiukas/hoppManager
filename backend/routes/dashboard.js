@@ -5,8 +5,12 @@ import { registerEmployee } from "../controllers/createEmployee.js";
 
 const router = express.Router();
 
-//Create employee
-// router.post("dashboard/employees/createUser", protect, registerEmployee);
+//POST employee
+router.post("/dashboard/team/createEmployee", protect, registerEmployee);
+
+//GET employee
+
+//UPDATE employee
 
 //GET daily cara reports >>> Dashboard
 router.get("/allCarReports", protect, getCarReport);
