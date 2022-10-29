@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 // @desc    Register new user
 // @route   POST /api/dashboard
 // @access  Private
-export const registerEmployee = asyncHandler(async (req, res) => {
+export const createEmployee = asyncHandler(async (req, res) => {
   const {
     firstName,
     middleName,
@@ -14,19 +14,9 @@ export const registerEmployee = asyncHandler(async (req, res) => {
     email,
     role,
     password,
-    confirmPassword,
   } = req.body;
 
-  if (
-    !firstName ||
-    !middleName ||
-    !lastName ||
-    !phoneNumber ||
-    !email ||
-    !role ||
-    !password ||
-    !confirmPassword
-  ) {
+  if (!firstName || !lastName || !phoneNumber || !email || !role || !password) {
     res.status(400);
     throw new Error("Please fill all fields");
   }
@@ -71,5 +61,5 @@ export const registerEmployee = asyncHandler(async (req, res) => {
 });
 
 export default {
-  registerEmployee,
+  createEmployee,
 };

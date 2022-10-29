@@ -7,7 +7,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 const initialState = {
   user: user ? user : null,
   isError: false,
-  isloading: false,
+  isLoading: false,
   message: false,
 };
 
@@ -41,20 +41,7 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // .addCase(register.pending, (state) => {
-      //   state.isLoading = true;
-      // })
-      // .addCase(register.fulfilled, (state, action) => {
-      //   state.isLoading = false;
-      //   state.isSuccess = true;
-      //   state.user = action.payload;
-      // })
-      // .addCase(register.rejected, (state, action) => {
-      //   state.isLoading = false;
-      //   state.isError = true;
-      //   state.message = action.payload;
-      //   state.user = null;
-      // })
+
       .addCase(login.pending, (state) => {
         state.isLoading = true;
       })

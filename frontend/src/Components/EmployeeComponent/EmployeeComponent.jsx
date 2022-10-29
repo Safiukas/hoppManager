@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
 import FormLabel from "react-bootstrap/esm/FormLabel";
 import Form from "react-bootstrap/Form";
-import { register, reset } from "../../Features/Auth/authSlice";
+import { createEmployee, reset } from "../../Features/team/teamSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+// import { ToastContainer, toast } from "react-toastify";
 
 const EmployeeComponent = () => {
+  // const toast = (message) => toast(message);
+
   const [formData, setFormData] = useState({
     firstName: "",
     middleName: "",
@@ -33,22 +35,25 @@ const EmployeeComponent = () => {
   // const navigate = useNavigate()
   const dispatch = useDispatch();
 
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.auth
+  const { employee, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.team
   );
 
   // Error/Success handlers
   useEffect(() => {
     if (isError) {
-      console.log(message);
       // Fire error modal
+      console.log(message);
     }
+
     if (isSuccess) {
       //Fire success modal
+      // toast("Employee created successfully!");
+      console.log("Employee created!");
     }
 
     dispatch(reset());
-  }, [user, isError, isSuccess, message, dispatch]);
+  }, [employee, isError, isSuccess, message, dispatch]);
 
   //Event handler
   const onChange = (e) => {
@@ -63,10 +68,10 @@ const EmployeeComponent = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      // Fire error modal
       console.log("Passwords don't match");
+      // toast("Passwords doesn't match!");
     } else {
-      const userData = {
+      const employeeData = {
         firstName,
         middleName,
         lastName,
@@ -76,7 +81,7 @@ const EmployeeComponent = () => {
         password,
       };
 
-      dispatch(register(userData));
+      dispatch(createEmployee(employeeData));
     }
   };
 
@@ -87,6 +92,8 @@ const EmployeeComponent = () => {
 
   return (
     <>
+      {/* TODO: Create title */}
+
       <section className="form-container">
         <Form onSubmit={onSubmit}>
           <Form.Group className="form-outline mb-4">
@@ -98,6 +105,7 @@ const EmployeeComponent = () => {
               id="firstName"
               name="firstName"
               autoComplete="off"
+              value={firstName}
               required
               onChange={onChange}
             />
@@ -111,8 +119,8 @@ const EmployeeComponent = () => {
               placeholder="Middle name"
               id="middleName"
               name="middleName"
+              value={middleName}
               autoComplete="off"
-              required
               onChange={onChange}
             />
           </Form.Group>
@@ -125,6 +133,7 @@ const EmployeeComponent = () => {
               placeholder="Last name"
               id="lastName"
               name="lastName"
+              value={lastName}
               autoComplete="off"
               required
               onChange={onChange}
@@ -139,6 +148,7 @@ const EmployeeComponent = () => {
               placeholder="7775983"
               id="phoneNumber"
               name="phoneNumber"
+              value={phoneNumber}
               autoComplete="off"
               required
               onChange={onChange}
@@ -149,10 +159,11 @@ const EmployeeComponent = () => {
             <FormLabel className="form-label">Email address:</FormLabel>
             <Form.Control
               className="form-control shadow-none"
-              type="emailAddress"
+              type="email"
               placeholder="john.johnsson@gmail.com"
-              id="emailAddress"
-              name="emailAddress"
+              id="email"
+              name="email"
+              value={email}
               autoComplete="off"
               required
               onChange={onChange}
@@ -165,15 +176,17 @@ const EmployeeComponent = () => {
               className="form-select shadow-none"
               aria-label="Role"
               name="role"
+              value={role}
               required
               onChange={onChange}
             >
               <option>Select role</option>
-              <option value="captain">Captain</option>
-              <option value="hopper">Hopper</option>
+              <option value="Captain">Captain</option>
+              <option value="Hopper">Hopper</option>
             </Form.Select>
           </Form.Group>
 
+          {/* TODO: Add functionality to view password  */}
           <Form.Group className="form-outline mb-4">
             <FormLabel className="form-label">Password</FormLabel>
             <Form.Control
@@ -182,6 +195,7 @@ const EmployeeComponent = () => {
               placeholder="Enter password"
               id="password"
               name="password"
+              value={password}
               required
               onChange={onChange}
             />
@@ -195,6 +209,7 @@ const EmployeeComponent = () => {
               placeholder="Repeat password"
               id="confirmPassword"
               name="confirmPassword"
+              value={confirmPassword}
               required
               onChange={onChange}
             />
