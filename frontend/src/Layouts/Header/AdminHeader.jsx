@@ -18,7 +18,7 @@ export const AdminHeader = () => {
           <Route path="" />
           <Route path="" />
         </Routes>
-        <Link to="/home">
+        <Link to="/dashboard">
           <img
             src={logo}
             className="logo"

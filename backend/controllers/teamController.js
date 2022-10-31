@@ -3,7 +3,7 @@ import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 
 // @desc    Register new user
-// @route   POST /api/dashboard
+// @route   POST /api/dashboard/team/createEmployee
 // @access  Private
 export const createEmployee = asyncHandler(async (req, res) => {
   const {
@@ -60,6 +60,19 @@ export const createEmployee = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    List of Hoppers
+// @route   GET /api/dashboard/team/hoppers
+// @access  Private
+export const getHoppers = async (req, res) => {
+  try {
+    const hoppers = await User.find({ role: "Hopper" });
+    res.status(200).json(hoppers);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export default {
+  getHoppers,
   createEmployee,
 };

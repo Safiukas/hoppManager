@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+.table-container {
+  padding: 20px 55px;
+}
+
 .btn-container {
   width: 100%;
   display: flex;
@@ -15,4 +19,8 @@
 
 .create-btn {
   font-size: 14px;
+}
+
+.view-user {
+  font-size: 23px;
 }

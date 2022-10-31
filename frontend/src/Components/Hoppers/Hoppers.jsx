@@ -1,13 +1,28 @@
 import "./Hopper.css";
+import Moment from "react-moment";
+import { TbUserSearch } from "react-icons/tb";
+import { useSelector, useDispatch } from "react-redux";
 import Button from "react-bootstrap/esm/Button";
-import { useState } from "react";
-import TeamModal from "../TeamModal/TeamModal";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getHoppers } from "../../Features/team/teamSlice";
 
 const Hoppers = () => {
-  const [openModal, setOpenModal] = useState(false);
+  const dispatch = useDispatch();
+
+  const { employee, isLoading, isError, message } = useSelector(
+    (state) => state.team
+  );
+
+  useEffect(() => {
+    dispatch(getHoppers());
+  }, [dispatch, getHoppers]);
+
   return (
     <div className="body">
+      <div className="title">
+        <h2>My team</h2>
+      </div>
       <section className="table-container">
         <div className="title">
           <h3>Hoppers</h3>
@@ -27,18 +42,25 @@ const Hoppers = () => {
               <th>Role:</th>
               <th>Date created:</th>
             </tr>
-            <tr className="table-body">
-              <td>156951</td>
-              <td>Mark</td>
-              <td>Milton</td>
-              <td>Hopper</td>
-              <td>2022-10-27</td>
-              <td>inspect icon</td>
-            </tr>
+            {employee.map((employee, index) => {
+              return (
+                <tr key={index} className="table-body">
+                  <td key={index}>#00{index}</td>
+                  <td key={index}>{employee.firstName}</td>
+                  <td key={index}>{employee.lastName}</td>
+                  <td key={index}>{employee.role}</td>
+                  <td key={index}>
+                    <Moment format="DD-MM-YYYY">{employee.createdAt}</Moment>
+                  </td>
+                  <td key={index}>
+                    <TbUserSearch className="view-user" />
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </section>
-      <TeamModal open={openModal} onClose={() => setOpenModal(false)} />
     </div>
   );
 };

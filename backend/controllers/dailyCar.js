@@ -38,5 +38,7 @@ export const getCarReport = async (req, res) => {
   try {
     const carReports = await DailyCarReport.find().populate("userId");
     res.status(200).json(carReports);
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };

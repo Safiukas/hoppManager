@@ -2,6 +2,7 @@ import axios from "axios";
 
 const API_URL = "/api/dashboard/team/";
 
+// Create employee
 const createEmployee = async (employeeData, token) => {
   //GET token
   const config = {
@@ -19,7 +20,21 @@ const createEmployee = async (employeeData, token) => {
   return response.data;
 };
 
+//GET Hoppers
+const getHoppers = async (token) => {
+  //GET token
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(API_URL + "hoppers", config);
+
+  return response.data;
+};
+
 const teamService = {
+  getHoppers,
   createEmployee,
 };
 
