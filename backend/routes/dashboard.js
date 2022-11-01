@@ -1,7 +1,11 @@
 import express from "express";
 import { protect } from "../middleware/verifyToken.js";
 import { getCarReport } from "../controllers/dailyCar.js";
-import { createEmployee, getHoppers } from "../controllers/teamController.js";
+import {
+  createEmployee,
+  getHoppers,
+  getCaptains,
+} from "../controllers/teamController.js";
 
 const router = express.Router();
 
@@ -14,7 +18,7 @@ router.post("/team/createEmployee", protect, createEmployee);
 router.get("/team/hoppers", protect, getHoppers);
 
 //GET Captains
-// router.get("/team/captains", protect, getCaptains);
+router.get("/team/captains", protect, getCaptains);
 
 //GET daily cara reports >>> Dashboard
 //TODO: Create and move to reportsController

@@ -47,6 +47,25 @@ export const getHoppers = createAsyncThunk(
   }
 );
 
+//Get Captains
+export const getCaptains = createAsyncThunk(
+  "dashboard/team/captains",
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await teamService.getCaptains(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const teamSlice = createSlice({
   name: "team",
   initialState,
@@ -82,6 +101,19 @@ export const teamSlice = createSlice({
         state.employee = action.payload;
       })
       .addCase(getHoppers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getCaptains.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getCaptains.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.employee = action.payload;
+      })
+      .addCase(getCaptains.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

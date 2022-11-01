@@ -72,7 +72,20 @@ export const getHoppers = async (req, res) => {
   }
 };
 
+// @desc    List of Captains
+// @route   GET /api/dashboard/team/hoppers
+// @access  Private
+export const getCaptains = async (req, res) => {
+  try {
+    const captains = await User.find({ role: "Captain" });
+    res.status(200).json(captains);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export default {
   getHoppers,
+  getCaptains,
   createEmployee,
 };

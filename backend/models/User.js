@@ -48,14 +48,6 @@ const UserSchema = new mongoose.Schema(
         ref: "DailyCarReport",
       },
     ],
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
-    updatedAt: {
-      type: Date,
-      default: Date.now,
-    },
   },
   {
     timestamps: true,

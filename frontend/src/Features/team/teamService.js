@@ -33,7 +33,21 @@ const getHoppers = async (token) => {
   return response.data;
 };
 
+//GET Hoppers
+const getCaptains = async (token) => {
+  //GET token
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(API_URL + "captains", config);
+
+  return response.data;
+};
+
 const teamService = {
+  getCaptains,
   getHoppers,
   createEmployee,
 };

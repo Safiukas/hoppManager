@@ -4,11 +4,17 @@ import FormLabel from "react-bootstrap/esm/FormLabel";
 import Form from "react-bootstrap/Form";
 import { createEmployee, reset } from "../../Features/team/teamSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-// import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "../../Assets/Styles/ReactToastify.css";
+
+const notify = (message) => toast(message);
 
 const EmployeeComponent = () => {
   // const toast = (message) => toast(message);
+
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -44,16 +50,35 @@ const EmployeeComponent = () => {
     if (isError) {
       // Fire error modal
       console.log(message);
+      toast.error(message, {
+        position: "top-left",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
 
     if (isSuccess) {
       //Fire success modal
-      // toast("Employee created successfully!");
-      console.log("Employee created!");
+      toast.success("Employee created successfully!", {
+        position: "top-left",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      navigate("/dashboard/team");
     }
 
     dispatch(reset());
-  }, [employee, isError, isSuccess, message, dispatch]);
+  }, [employee, isError, isSuccess, message, dispatch, navigate]);
 
   //Event handler
   const onChange = (e) => {
@@ -68,8 +93,16 @@ const EmployeeComponent = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      console.log("Passwords don't match");
-      // toast("Passwords doesn't match!");
+      toast.warn("Passwords don't match!", {
+        position: "top-left",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     } else {
       const employeeData = {
         firstName,
@@ -88,6 +121,7 @@ const EmployeeComponent = () => {
   if (isLoading) {
     //Fire loading spinner
     console.log("Loading");
+    toast("Loading...");
   }
 
   return (
@@ -223,6 +257,7 @@ const EmployeeComponent = () => {
           </div>
         </Form>
       </section>
+      <ToastContainer />
     </>
   );
 };
