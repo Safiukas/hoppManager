@@ -7,13 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import "../../Assets/Styles/ReactToastify.css";
 
 const notify = (message) => toast(message);
 
 const EmployeeComponent = () => {
-  // const toast = (message) => toast(message);
-
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -50,7 +47,7 @@ const EmployeeComponent = () => {
     if (isError) {
       // Fire error modal
       console.log(message);
-      toast.error(message, {
+      notify.error(message, {
         position: "top-left",
         autoClose: 2000,
         hideProgressBar: false,
@@ -64,7 +61,7 @@ const EmployeeComponent = () => {
 
     if (isSuccess) {
       //Fire success modal
-      toast.success("Employee created successfully!", {
+      notify.success("Employee created successfully!", {
         position: "top-left",
         autoClose: 2000,
         hideProgressBar: false,
@@ -93,7 +90,7 @@ const EmployeeComponent = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      toast.warn("Passwords don't match!", {
+      notify.warn("Passwords don't match!", {
         position: "top-left",
         autoClose: 2000,
         hideProgressBar: false,
@@ -121,7 +118,7 @@ const EmployeeComponent = () => {
   if (isLoading) {
     //Fire loading spinner
     console.log("Loading");
-    toast("Loading...");
+    notify("Loading...");
   }
 
   return (

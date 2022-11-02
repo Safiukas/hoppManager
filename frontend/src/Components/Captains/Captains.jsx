@@ -8,7 +8,7 @@ import { getCaptains } from "../../Features/team/teamSlice";
 const Captains = () => {
   const dispatch = useDispatch();
 
-  const { employee, isLoading, isError, message } = useSelector(
+  const { captain, isLoading, isError, message } = useSelector(
     (state) => state.team
   );
 
@@ -32,15 +32,15 @@ const Captains = () => {
               <th>Role:</th>
               <th>Date created:</th>
             </tr>
-            {employee.map((employee, index) => {
+            {captain.map((captain, index) => {
               return (
                 <tr key={index} className="table-body">
                   <td key={index}>#00{index}</td>
-                  <td key={index}>{employee.firstName}</td>
-                  <td key={index}>{employee.lastName}</td>
-                  <td key={index}>{employee.role}</td>
+                  <td key={index}>{captain.firstName}</td>
+                  <td key={index}>{captain.lastName}</td>
+                  <td key={index}>{captain.role}</td>
                   <td key={index}>
-                    <Moment format="DD-MM-YYYY">{employee.createdAt}</Moment>
+                    <Moment format="DD-MM-YYYY">{captain.createdAt}</Moment>
                   </td>
                   <td key={index}>
                     <TbUserSearch className="view-user" />

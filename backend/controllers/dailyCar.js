@@ -34,6 +34,18 @@ export const createCarReport = async (req, res, next) => {
 };
 
 //GET daily car report
+export const getReport = async (req, res) => {
+  try {
+    const report = await DailyCarReport.findById(req.params.id).populate(
+      "userId"
+    );
+    res.status(200).json(report);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//GET ALL daily car reports
 export const getCarReport = async (req, res) => {
   try {
     const carReports = await DailyCarReport.find().populate("userId");

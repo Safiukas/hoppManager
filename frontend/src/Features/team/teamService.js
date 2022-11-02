@@ -28,9 +28,14 @@ const getHoppers = async (token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.get(API_URL + "hoppers", config);
-
-  return response.data;
+  try {
+    const response = await axios.get(API_URL + "hoppers", config);
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data);
+    }
+  }
 };
 
 //GET Hoppers

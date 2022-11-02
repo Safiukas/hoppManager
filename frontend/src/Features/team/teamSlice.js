@@ -3,6 +3,7 @@ import teamService from "./teamService";
 
 const initialState = {
   employee: [],
+  captain: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -111,7 +112,7 @@ export const teamSlice = createSlice({
       .addCase(getCaptains.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.employee = action.payload;
+        state.captain = action.payload;
       })
       .addCase(getCaptains.rejected, (state, action) => {
         state.isLoading = false;

@@ -3,9 +3,64 @@ import { createCarReport } from "../../Features/carReport/carReportSlice";
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "../../Assets/Styles/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
+const notify = (message) =>
+  toast.warn(message, {
+    position: "top-left",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
+
+const loadingToast = (message) =>
+  toast.warn(message, {
+    position: "top-left",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
+
+const errToast = (message) =>
+  toast.error(message, {
+    position: "top-left",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
+
+const successToast = (message) => {
+  toast.success(message, {
+    position: "top-left",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
+};
 
 const DailyCarForm = () => {
+  const navigate = useNavigate();
+
   const [licensePlate, setLicensePlate] = useState("");
   const [mileage, setMileage] = useState(0);
 
@@ -39,8 +94,6 @@ const DailyCarForm = () => {
     const { value, checked } = e.target;
     const { checklist } = generalCheck;
 
-    console.log(`${value} is ${checked}`);
-
     // Case 1 : The user checks the box
     if (checked) {
       setGeneralCheck({
@@ -61,8 +114,6 @@ const DailyCarForm = () => {
     const { value, checked } = e.target;
     const { checklist } = serviceCheck;
 
-    console.log(`${value} is ${checked}`);
-
     // Case 1 : The user checks the box
     if (checked) {
       setServiceCheck({
@@ -80,28 +131,42 @@ const DailyCarForm = () => {
 
   const dispatch = useDispatch();
 
-  console.log(generalCheck);
-  console.log(serviceCheck);
+  const { isError, isSuccess, isLoading, message } = useSelector(
+    (state) => state.carReport
+  );
+
+  useEffect(() => {
+    if (isError) {
+      errToast(message);
+    }
+
+    if (isSuccess) {
+      successToast("Deilibilar report created!");
+      navigate("/home");
+    }
+  }, [isError, isSuccess, navigate, message]);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      createCarReport({
+
+    if (images.length === 0) {
+      notify("Please upload images!");
+    } else {
+      const carReportData = {
         licensePlate,
         mileage,
-        //TODO: checklist dispatch
         generalCheck,
         serviceCheck,
         images,
-      })
-    );
+      };
 
-    setLicensePlate("");
-    setMileage("");
-    setGeneralCheck([]);
-    setServiceCheck([]);
-    setImages([]);
+      dispatch(createCarReport(carReportData));
+    }
   };
+
+  if (isLoading) {
+    loadingToast("Loading...");
+  }
 
   return (
     <>
@@ -121,6 +186,7 @@ const DailyCarForm = () => {
                 onChange={(e) => {
                   setLicensePlate(e.target.value);
                 }}
+                required
               >
                 <option>Select</option>
                 <option value="GY543 // #23435">GY543 // #23435</option>
@@ -142,6 +208,7 @@ const DailyCarForm = () => {
                 onChange={(e) => {
                   setMileage(e.target.value);
                 }}
+                required
               />
             </Form.Group>
           </div>
@@ -297,6 +364,7 @@ const DailyCarForm = () => {
           </div>
         </Form>
       </div>
+      <ToastContainer />
     </>
   );
 };
