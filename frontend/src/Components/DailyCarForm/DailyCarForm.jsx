@@ -5,8 +5,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
-import "../../Assets/Styles/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 
 const notify = (message) =>
@@ -59,8 +58,6 @@ const successToast = (message) => {
 };
 
 const DailyCarForm = () => {
-  const navigate = useNavigate();
-
   const [licensePlate, setLicensePlate] = useState("");
   const [mileage, setMileage] = useState(0);
 
@@ -138,13 +135,13 @@ const DailyCarForm = () => {
   useEffect(() => {
     if (isError) {
       errToast(message);
+      console.log(message);
     }
 
     if (isSuccess) {
       successToast("Deilibilar report created!");
-      navigate("/home");
     }
-  }, [isError, isSuccess, navigate, message]);
+  }, [isError, isSuccess, message]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -161,6 +158,7 @@ const DailyCarForm = () => {
       };
 
       dispatch(createCarReport(carReportData));
+      // successToast("Deilibilar report created!");
     }
   };
 

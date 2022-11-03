@@ -2,27 +2,22 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as RiIcons from "react-icons/ri";
+import * as MdIcons from "react-icons/md";
 
 export const SidebarData = [
   {
-    title: "Team",
-    path: "/dashboard/team",
+    title: "Home",
+    path: "/dashboard",
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: "Hoppers",
-        path: "/dashboard/team/hoppers",
-        icon: <IoIcons.IoIosPaper />,
-      },
-      {
-        title: "Captains",
-        path: "/dashboard/team/captains",
-        icon: <IoIcons.IoIosPaper />,
-      },
-    ],
+  },
+  {
+    title: "Team",
+    path: "/dashboard/team",
+    icon: <AiIcons.AiOutlineTeam />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
     title: "Reports",
@@ -33,33 +28,45 @@ export const SidebarData = [
 
     subNav: [
       {
-        title: "Reports",
-        path: "/reports/reports1",
+        title: "Shift reports",
+        path: "/dashboard/shiftReports",
         icon: <IoIcons.IoIosPaper />,
         cName: "sub-nav",
       },
       {
-        title: "Reports 2",
-        path: "/reports/reports2",
+        title: "Deilibilar reports",
+        path: "/dashboard/dailyCarReports",
         icon: <IoIcons.IoIosPaper />,
         cName: "sub-nav",
       },
       {
-        title: "Reports 3",
-        path: "/reports/reports3",
+        title: "Accident reports",
+        path: "/dashboard/accidentReports",
         icon: <IoIcons.IoIosPaper />,
       },
     ],
   },
   {
-    title: "Products",
-    path: "/products",
-    icon: <FaIcons.FaCartPlus />,
-  },
-  {
-    title: "Team",
-    path: "/team",
-    icon: <IoIcons.IoMdPeople />,
+    title: "Fleet",
+    path: "/dashboard/allFleet",
+    icon: <MdIcons.MdElectricCar />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+
+    subNav: [
+      {
+        title: "Cargo vehicles",
+        path: "/dashboard/cargoVehicles",
+        icon: <IoIcons.IoIosPaper />,
+        cName: "sub-nav",
+      },
+      {
+        title: "Deilibilar vehicles",
+        path: "/dashboard/dailyCars",
+        icon: <IoIcons.IoIosPaper />,
+        cName: "sub-nav",
+      },
+    ],
   },
   {
     title: "Messages",
@@ -83,8 +90,8 @@ export const SidebarData = [
     ],
   },
   {
-    title: "Support",
-    path: "/support",
+    title: "Patch notes",
+    path: "/patchNotes",
     icon: <IoIcons.IoMdHelpCircle />,
   },
 ];

@@ -9,6 +9,7 @@ import { IconContext } from "react-icons/lib";
 
 const Nav = styled.div`
   background: #1f2022;
+  border-right: 1px ridge #f7427f;
   height: 80px;
   display: flex;
   justify-content: flex-start;
@@ -27,6 +28,7 @@ const NavIcon = styled(Link)`
 
 const SidebarNav = styled.nav`
   background: #1f2022;
+  border-right: 1px ridge #f7427f;
   width: 250px;
   height: 100vh;
   display: flex;
@@ -36,6 +38,11 @@ const SidebarNav = styled.nav`
   left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
   transition: 350ms;
   z-index: 10;
+
+  &:hover {
+    color: #00e9bc;
+    cursor: pointer;
+  }
 `;
 
 const SidebarWrap = styled.div`
@@ -49,7 +56,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <IconContext.Provider value={{ color: "#fff" }}>
+      <IconContext.Provider value={{ color: "#ececec" }}>
         <Nav>
           <NavIcon to="#">
             <FaIcons.FaBars onClick={showSidebar} />

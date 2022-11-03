@@ -9,7 +9,7 @@ const AdminReports = () => {
       <header>
         <AdminHeader />
       </header>
-      <h3>All reports</h3>
+      <h3 className="title">All reports</h3>
       <CarReportTable />
       <Footer>
         <Footer />

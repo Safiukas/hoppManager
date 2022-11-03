@@ -24,7 +24,7 @@ const getCarReports = async (token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.get("/api/dashboard/allCarReports", config);
+  const response = await axios.get("/api/dashboard/dailyCarReports", config);
 
   return response.data;
 };

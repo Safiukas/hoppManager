@@ -50,7 +50,7 @@ const Hoppers = () => {
                     <Moment format="DD-MM-YYYY">{employee.createdAt}</Moment>
                   </td>
                   <td key={index}>
-                    <TbUserSearch className="view-user" />
+                    <TbUserSearch className="view-icon" />
                   </td>
                 </tr>
               );

@@ -1,4 +1,5 @@
 import "./ReportTable.css";
+import "../Hoppers/Hopper.css";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAccidents } from "../../Features/accidentReport/accidentSlice";

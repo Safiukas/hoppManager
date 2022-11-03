@@ -1,10 +1,12 @@
+import "../Hoppers/Hoppers";
 import "./CarReportTable.css";
-import { useState, useEffect } from "react";
+import Moment from "react-moment";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCarReports } from "../../Features/carReport/carReportSlice";
+import { HiDocumentSearch } from "react-icons/hi";
 
 //UI imports
-import Button from "react-bootstrap/Button";
 
 const CarReportTable = (props) => {
   const dispatch = useDispatch();
@@ -15,71 +17,46 @@ const CarReportTable = (props) => {
 
   useEffect(() => {
     dispatch(getCarReports());
-  }, [dispatch, getCarReports]);
+  }, [dispatch]);
 
   console.log(carReports);
 
   return (
-    <>
+    <div className="body">
       <section className="table-container">
         <div className="title">
           <h3>Deilibilar reports</h3>
         </div>
+
         <table>
-          <tr className="table-header">
-            <th>Id:</th>
-            <th>Captain:</th>
-            <th>Mileage:</th>
-            <th>License plate // QR code:</th>
-            <th>Date created:</th>
-          </tr>
-          {carReports.map((report, index) => {
-            return (
-              <tr className="table-body">
-                <td key={index}>#{index}</td>
-                {report.userId.map((user, i) => (
-                  <td key={i}>{user.firstName}</td>
-                ))}
-              </tr>
-            );
-          })}
-
-          {/* TEST */}
-          {/* {carReports.map((report, index) => {
-            return (
-              <tr className="table-body">
-                <td key={index}>#{index}</td>
-                {report.userId.map((user, i) => (
-                  <td key={i}>{user.firstName}</td>
-                ))}
-              </tr>
-            );
-          })} */}
-
-          {/* End TEST */}
-
-          <tr className="table-body">
-            <td>156951</td>
-            <td>Mark</td>
-            <td>12654 km</td>
-            <td>LHT16 // #54664</td>
-            <td>2022-10-27</td>
-            <td>inspect icon</td>
-          </tr>
-          <tr className="table-body">
-            <td>156951</td>
-            <td>Mark</td>
-            <td>12654 km</td>
-            <td>LHT16 // #54664</td>
-            <td>2022-10-27</td>
-            <td>inspect icon</td>
-          </tr>
+          <tbody>
+            <tr className="table-header">
+              <th>Id:</th>
+              <th>License plate / QR code:</th>
+              <th>Make and model:</th>
+              <th>Created by:</th>
+              <th>Date created:</th>
+            </tr>
+            {carReports.map((report, index) => {
+              return (
+                <tr key={index} className="table-body">
+                  <td key={index}>#00{index}</td>
+                  <td key={index}>{report.licensePlate}</td>
+                  <td key={index}>make and model</td>
+                  <td key={index}>{report?.userId?.firstName}</td>
+                  <td key={index}>
+                    <Moment format="DD-MM-YYYY">{report.createdAt}</Moment>
+                  </td>
+                  <td key={index}>
+                    <HiDocumentSearch className="view-icon" />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
-        <div className="view-container">
-          <Button className="view-btn shadow-none">View All</Button>
-        </div>
       </section>
-    </>
+    </div>
   );
 };
 
