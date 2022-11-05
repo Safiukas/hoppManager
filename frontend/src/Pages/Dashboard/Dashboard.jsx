@@ -1,4 +1,3 @@
-import ReportTable from "../../Components/ReportTable/ReportTable";
 import { Footer } from "../../Layouts/Footer/Footer";
 import { AdminHeader } from "../../Layouts/Header/AdminHeader";
 import { useEffect } from "react";
@@ -22,9 +21,11 @@ export const Dashboard = () => {
       <header>
         <AdminHeader />
       </header>
-      <div className="main-container">
-        <ReportTable />
-      </div>
+
+      <h3 className="title">Charts (2)</h3>
+      <h3 className="title">latest Deilibilar reports</h3>
+      <h3 className="title">latest shift reports</h3>
+
       <footer>
         <Footer />
       </footer>

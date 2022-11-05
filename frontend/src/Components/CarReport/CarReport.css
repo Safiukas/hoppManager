@@ -1,0 +1,33 @@
+.info-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0px 80px;
+}
+
+.info-label {
+  color: #ececec;
+  margin-right: 18px;
+}
+
+.info-value {
+  color: #ececec;
+}
+
+.report-tab {
+  margin: 12px 0px;
+  display: flex;
+  border: 1px solid white;
+}
+
+.checklist {
+  display: flex;
+  margin: 12px 0px;
+}
+
+.checklist-values {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

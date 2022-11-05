@@ -4,7 +4,6 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
-// import PrivateRoutes from "./Components/PrivateRoutes/PrivateRoutes";
 import CaptainHome from "./Pages/CaptainHome/CaptainHome";
 import AccidentReport from "./Pages/AccidentReport/AccidentReport";
 import ShiftReport from "./Pages/ShiftReport/ShiftReport";
@@ -15,6 +14,10 @@ import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import AdminReports from "./Pages/AdminReports/AdminReports";
 import Team from "./Pages/Team/Team";
 import CreateEmployee from "./Pages/CreateEmployee/CreateEmployee";
+import CarReportTable from "./Components/CarReportTable/CarReportTable";
+import Hoppers from "./Components/Hoppers/Hoppers";
+import Captains from "./Components/Captains/Captains";
+import CarReport from "./Components/CarReport/CarReport";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,11 +32,36 @@ const router = createBrowserRouter(
       </Route>
       <Route path="/dashboard">
         <Route index element={<Dashboard />} />
-        <Route path="allReports" element={<AdminReports />} />
+
+        <Route path="/dashboard/allReports">
+          <Route index element={<AdminReports />} />
+        </Route>
+
+        <Route path="/dashboard/dailyCarReports">
+          <Route index element={<CarReportTable />} />
+          {/* TODO: Create daily car profile component */}
+          <Route path=":id" element={<CarReport />} />
+        </Route>
+
+        <Route path="/dashboard/accidentReports">
+          {/* TODO: Create accident report table */}
+          {/* TODO2: Create accident report profile component */}
+          <Route index />
+        </Route>
+
+        <Route path="/dashboard/shiftReports">
+          {/* TODO: Create shift report table */}
+          {/* TODO2: Create shift report profile component */}
+          <Route index />
+        </Route>
+
         <Route path="/dashboard/team">
           <Route index element={<Team />} />
-          <Route path="hoppers" />
-          <Route path="captains" />
+          <Route path="hoppers" element={<Hoppers />} />
+          {/* TODO: Create hopper profile component */}
+          <Route path="hoppers/:id" />
+          <Route path="captains" element={<Captains />} />
+          {/* TODO: Create captain profile component */}
           <Route path="createEmployee" element={<CreateEmployee />} />
         </Route>
       </Route>

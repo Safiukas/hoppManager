@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCarReports } from "../../Features/carReport/carReportSlice";
 import { HiDocumentSearch } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 //UI imports
 
@@ -18,8 +19,6 @@ const CarReportTable = (props) => {
   useEffect(() => {
     dispatch(getCarReports());
   }, [dispatch]);
-
-  console.log(carReports);
 
   return (
     <div className="body">
@@ -40,15 +39,20 @@ const CarReportTable = (props) => {
             {carReports.map((report, index) => {
               return (
                 <tr key={index} className="table-body">
-                  <td key={index}>#00{index}</td>
-                  <td key={index}>{report.licensePlate}</td>
-                  <td key={index}>make and model</td>
-                  <td key={index}>{report?.userId?.firstName}</td>
-                  <td key={index}>
+                  <td>#00{index}</td>
+                  <td>{report.licensePlate}</td>
+                  <td>make and model</td>
+                  <td>{report?.userId?.firstName}</td>
+                  <td>
                     <Moment format="DD-MM-YYYY">{report.createdAt}</Moment>
                   </td>
-                  <td key={index}>
-                    <HiDocumentSearch className="view-icon" />
+                  <td>
+                    <Link
+                      className="info-btn"
+                      to={`/dashboard/dailyCarReports/${report._id}`}
+                    >
+                      <HiDocumentSearch className="view-icon" />
+                    </Link>
                   </td>
                 </tr>
               );

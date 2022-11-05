@@ -6,7 +6,6 @@ const DailyCarReportSchema = new mongoose.Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-
     licensePlate: {
       type: String,
       required: true,
@@ -35,10 +34,6 @@ const DailyCarReportSchema = new mongoose.Schema(
         },
       },
     ],
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
   },
   {
     timestamps: true,

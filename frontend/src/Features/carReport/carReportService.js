@@ -29,9 +29,26 @@ const getCarReports = async (token) => {
   return response.data;
 };
 
+// GET car report by ID
+const getCarReportById = async (id, token) => {
+  //Get token
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(
+    `/api/dashboard/dailyCarReports/${id}`,
+    config
+  );
+
+  return response.data;
+};
+
 const carReportService = {
   createCarReport,
   getCarReports,
+  getCarReportById,
 };
 
 export default carReportService;
