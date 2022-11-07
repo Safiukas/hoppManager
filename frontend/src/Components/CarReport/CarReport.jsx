@@ -28,57 +28,67 @@ const CarReport = () => {
   }
 
   return (
-    <>
-      <h3 className="title">report info</h3>
-      <section className="info-container">
-        <div className="report-tab">
-          <div>
-            <span className="info-label">ID:</span>
-          </div>
-          <div>
-            <span className="info-value">{id}</span>
-          </div>
+    <main className="report-body">
+      <section className="car-profile">
+        <h5 className="car-model">Hyundai Kona</h5>
+        <img
+          className="car-img"
+          src="https://i.gaw.to/vehicles/photos/40/24/402482-2021-hyundai-kona.jpg?1024x640"
+          alt="Huyndai Kona"
+        />
+        <span className="report-value">{singleReport.licensePlate}</span>
+        <span className="report-value">QR: {singleReport.licensePlate}</span>
+      </section>
+      <section className="report-details">
+        <div className="tab">
+          <span className="report-label">ID:</span>
+          <span className="report-value">{singleReport._id}</span>
         </div>
-        <div className="report-tab">
-          <div>
-            <span className="info-label">Date created:</span>
-          </div>
-          <div>
-            <Moment className="info-value" format="DD-MM-YYYY HH:mm">
-              {singleReport.createdAt}
-            </Moment>
-          </div>
+        <div className="tab">
+          <span className="report-label">Created at:</span>
+          <Moment className="report-value" format="DD-MM-YYYY HH:mm">
+            {singleReport?.createdAt}
+          </Moment>
         </div>
-        <div className="report-tab">
-          <div>
-            <span className="info-label">License plate // QR code:</span>
-          </div>
-          <div>
-            <span className="info-value">{singleReport.licensePlate}</span>
-          </div>
+        <div className="tab">
+          <span className="report-label">Mileage:</span>
+          <span className="report-value">{singleReport.mileage} km</span>
         </div>
-        <div className="report-tab">
-          <span className="info-label">Mileage:</span>
-          <span className="info-value">{singleReport.mileage} km</span>
+        <div className="tab">
+          <span className="report-label">Captain:</span>
+          <span className="report-value">{singleReport.userId?.firstName}</span>
         </div>
-        <div className="checklist">
-          <span className="info-label">General checklist:</span>
-          <div className="checklist-values">
-            <p className="info-value">
-              {singleReport.generalCheck[0].checklist}
-            </p>
-          </div>
-        </div>
-        <div className="checklist">
-          <span className="info-label">Service checklist:</span>
-          <div className="checklist-values">
-            <span className="info-value">
-              {singleReport.serviceCheck[0].checklist}
+        <div className="tab">
+          <span className="report-label">General checklist:</span>
+          <div className="checklist-value">
+            <span className="checklist-value">
+              {/* {singleReport.generalCheck[0]?.checklist} */}
             </span>
           </div>
         </div>
+        <div className="tab">
+          <span className="report-label">Service checklist:</span>
+          <div className="checklist-value">
+            <span className="report-value">
+              {/* {singleReport.serviceCheck[0]?.checklist} */}
+            </span>
+          </div>
+        </div>
+        <div className="image-tab">
+          {singleReport.images?.map((img, index) => {
+            return (
+              <div className="image-tab" key={index}>
+                <img
+                  className="report-imgs"
+                  src={img.url}
+                  alt="report photos"
+                />
+              </div>
+            );
+          })}
+        </div>
       </section>
-    </>
+    </main>
   );
 };
 

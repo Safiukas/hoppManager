@@ -18,6 +18,7 @@ import CarReportTable from "./Components/CarReportTable/CarReportTable";
 import Hoppers from "./Components/Hoppers/Hoppers";
 import Captains from "./Components/Captains/Captains";
 import CarReport from "./Components/CarReport/CarReport";
+import Fleet from "./Pages/Fleet/Fleet";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,13 +37,10 @@ const router = createBrowserRouter(
         <Route path="/dashboard/allReports">
           <Route index element={<AdminReports />} />
         </Route>
-
         <Route path="/dashboard/dailyCarReports">
           <Route index element={<CarReportTable />} />
-          {/* TODO: Create daily car profile component */}
           <Route path=":id" element={<CarReport />} />
         </Route>
-
         <Route path="/dashboard/accidentReports">
           {/* TODO: Create accident report table */}
           {/* TODO2: Create accident report profile component */}
@@ -53,6 +51,12 @@ const router = createBrowserRouter(
           {/* TODO: Create shift report table */}
           {/* TODO2: Create shift report profile component */}
           <Route index />
+        </Route>
+
+        <Route path="/dashboard/allFleet">
+          <Route index element={<Fleet />} />
+          <Route path="dailyCars" />
+          <Route path="cargoVehicles" />
         </Route>
 
         <Route path="/dashboard/team">

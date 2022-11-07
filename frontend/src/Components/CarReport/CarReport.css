@@ -1,33 +1,63 @@
-.info-container {
+.report-body {
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin: 0px 80px;
+  justify-content: center;
+  margin-top: 25px;
 }
 
-.info-label {
+.car-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.report-details {
+  max-width: 600px;
+}
+
+.car-model {
+  color: #ff5783;
+  text-transform: uppercase;
+  padding-bottom: 15px;
+}
+
+.car-img {
+  width: 220px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  padding-bottom: 15px;
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+}
+
+.report-label {
+  color: #ff5783;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.report-value {
   color: #ececec;
+  font-size: 16px;
   margin-right: 18px;
 }
 
-.info-value {
-  color: #ececec;
+.checklist-value {
+  display: flex !important;
+  flex-direction: column !important;
 }
 
-.report-tab {
-  margin: 12px 0px;
-  display: flex;
-  border: 1px solid white;
-}
-
-.checklist {
-  display: flex;
-  margin: 12px 0px;
-}
-
-.checklist-values {
+.image-tab {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.report-imgs {
+  width: 150px;
+  margin: 10px 10px;
 }

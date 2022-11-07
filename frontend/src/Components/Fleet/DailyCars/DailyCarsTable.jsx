@@ -1,42 +1,26 @@
-// import "../Hoppers/Hoppers.css";
-import "./CarReportTable.css";
-import Moment from "react-moment";
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getCarReports } from "../../Features/carReport/carReportSlice";
-import { HiDocumentSearch } from "react-icons/hi";
+import Button from "react-bootstrap/esm/Button";
 import { Link } from "react-router-dom";
+import "../../CarReportTable/CarReportTable.css";
 
-//UI imports
-
-const CarReportTable = (props) => {
-  const dispatch = useDispatch();
-
-  const { carReports, isLoading, isError, message } = useSelector(
-    (state) => state.carReport
-  );
-
-  useEffect(() => {
-    dispatch(getCarReports());
-  }, [dispatch]);
-
+const DailyCarsTable = () => {
   return (
     <div className="body">
       <section className="table-container">
         <div className="title">
-          <h3>Deilibilar reports</h3>
+          <h3>Deilibilars</h3>
         </div>
 
         <table>
           <tbody>
             <tr className="table-header">
               <th>Id:</th>
-              <th>License plate / QR code:</th>
+              <th>License plate:</th>
+              <th>QR code:</th>
               <th>Make and model:</th>
               <th>Created by:</th>
               <th>Date created:</th>
             </tr>
-            {carReports.map((report, index) => {
+            {/* {carReports.map((report, index) => {
               return (
                 <tr key={index} className="table-body">
                   <td>#00{index}</td>
@@ -56,12 +40,17 @@ const CarReportTable = (props) => {
                   </td>
                 </tr>
               );
-            })}
+            })} */}
           </tbody>
         </table>
+        <div className="btn-container">
+          <Link to="/dashboard/dailyCars">
+            <Button className="create-btn shadow-none">View all</Button>
+          </Link>
+        </div>
       </section>
     </div>
   );
 };
 
-export default CarReportTable;
+export default DailyCarsTable;

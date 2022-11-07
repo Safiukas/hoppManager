@@ -3,7 +3,7 @@ import carReportService from "./carReportService";
 
 const initialState = {
   carReports: [],
-  singleReport: {},
+  singleReport: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
