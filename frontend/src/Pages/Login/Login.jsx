@@ -1,13 +1,8 @@
-import "./Login.css";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login, reset } from "../../Features/Auth/authSlice";
 
-// UI imports
-import FormLabel from "react-bootstrap/esm/FormLabel";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 const loginImage = require("../../Assets/Images/login-image.jpg");
 const hoppLogo = require("../../Assets/Images/logo.jpg");
 
@@ -57,59 +52,62 @@ const Login = () => {
   };
 
   return (
-    <section className="vh-100">
-      <div className="container py-5 h-100">
-        <div className="row d-flex align-items-center justify-content-center h-100">
-          <div className="logo col-md-8 col-lg-7 col-xl-6">
-            <img src={loginImage} className="img-fluid" alt="Hopp background" />
+    <section className="h-screen w-screen flex items-center justify-center">
+      <div className="w-full flex items-center justify-center">
+        <div className="w-1/2 mr-2 py-5 flex items-center flex-col">
+          <div className="">
+            <img src={hoppLogo} className="h-16 rounded-md" alt="Hopp Logo" />
           </div>
 
-          <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-            <div className="form-logo">
-              <img src={hoppLogo} className="hopp-logo" alt="Hopp Logo" />
+          <h4 className="text-2xl py-3 text-[#ff5783] uppercase">Log In</h4>
+
+          <form onSubmit={onSubmit}>
+            <div className="w-80 flex flex-col my-3">
+              <label className="text-[#ececec] mb-2 text-lg">
+                Email address:
+              </label>
+              <input
+                className="bg-transparent border-1 focus:outline-none focus:border-[#1ce5be] py-2 px-2 rounded-md text-[#1ce5be] text-lg"
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={onChange}
+                autoComplete="off"
+                required
+              />
             </div>
 
-            <h4 className="title">Log In</h4>
+            <div className="w-80 flex flex-col my-3">
+              <label className="text-[#ececec] mb-2 text-lg">Password:</label>
+              <input
+                className="bg-transparent border-1 focus:outline-none focus:border-[#1ce5be] py-2 px-2 rounded-md text-[#1ce5be] text-lg"
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={onChange}
+                required
+              />
+            </div>
 
-            {/* React Form */}
-            <Form onSubmit={onSubmit}>
-              <Form.Group className="form-outline mb-4">
-                <FormLabel className="form-label">Email address</FormLabel>
-                <Form.Control
-                  className="form-control shadow-none"
-                  type="email"
-                  placeholder="Enter email"
-                  id="email"
-                  name="email"
-                  value={email}
-                  onChange={onChange}
-                  autoComplete="off"
-                  required
-                />
-              </Form.Group>
+            <div className="flex items-center justify-center my-4">
+              {/* <Button className="login-btn shadow-none" type="submit">
+                Login
+              </Button> */}
 
-              <Form.Group className="form-outline mb-4">
-                <FormLabel className="form-label">Password</FormLabel>
-                <Form.Control
-                  className="form-control shadow-none"
-                  type="password"
-                  placeholder="Enter password"
-                  id="password"
-                  name="password"
-                  value={password}
-                  onChange={onChange}
-                  required
-                />
-              </Form.Group>
+              <button
+                type="submit"
+                className="border-1 px-5 py-2 rounded-full border-[#1ce5be] text-[#ececec] text-2xl hover:text-[#ff5783]"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
 
-              <div className="btn-container">
-                <Button className="login-btn shadow-none" type="submit">
-                  Login
-                </Button>
-              </div>
-            </Form>
-            {/* End of React Form */}
-          </div>
+        <div className="w-1/2 mx-3 py-7 items-center justify-center hidden md:block">
+          <img src={loginImage} className="w-80 h-95" alt="Hopp background" />
         </div>
       </div>
     </section>
