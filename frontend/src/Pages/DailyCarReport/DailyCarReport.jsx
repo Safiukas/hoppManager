@@ -1,6 +1,5 @@
 import React from "react";
 import DailyCarForm from "../../Components/DailyCarForm/DailyCarForm";
-import { Footer } from "../../Layouts/Footer/Footer";
 import { Header } from "../../Layouts/Header/Header";
 
 const DailyCarReport = () => {
@@ -10,7 +9,6 @@ const DailyCarReport = () => {
       <div>
         <DailyCarForm />
       </div>
-      <Footer />
     </>
   );
 };

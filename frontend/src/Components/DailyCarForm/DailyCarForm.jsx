@@ -1,8 +1,5 @@
-import "./DailyCar.css";
 import { createCarReport } from "../../Features/carReport/carReportSlice";
 import { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/esm/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -168,199 +165,286 @@ const DailyCarForm = () => {
 
   return (
     <>
-      <h2 className="title">Daily Car report</h2>
-      <div className="form-container">
-        <Form className="form-group" onSubmit={onSubmit}>
-          {/* ---1--- */}
-          <div className="tab">
-            <Form.Group>
-              <Form.Label className="form-label">
-                Car license plate & QR code:
-              </Form.Label>
-              <Form.Select
-                className="form-select shadow-none"
-                name="licensePlate"
-                value={licensePlate}
-                onChange={(e) => {
-                  setLicensePlate(e.target.value);
-                }}
-                required
-              >
-                <option>Select</option>
-                <option value="GY543 // #23435">GY543 // #23435</option>
-                <option value="RZ873 // #23435">RZ873 // #23435</option>
-                <option value="FT943 // #23435">FT943 // #23435</option>
-              </Form.Select>
-            </Form.Group>
+      <div className="w-screen flex items-center flex-col justify-center">
+        <h3 className="text-2xl mt-5 text-[#ff5783] uppercase">
+          Deilibilar report
+        </h3>
+        <form className="" onSubmit={onSubmit}>
+          <div className="flex flex-col my-4 px-5">
+            <label className="text-[#ececec] mb-2 text-xl">
+              Car license plate & QR code:
+            </label>
+            <select
+              className="bg-transparent border-1 focus:outline-none focus:border-[#1ce5be] py-2 px-2 rounded-md text-[#1ce5be] text-lg"
+              name="licensePlate"
+              value={licensePlate}
+              onChange={(e) => {
+                setLicensePlate(e.target.value);
+              }}
+              required
+            >
+              <option>Select</option>
+              <option value="GY543 // #23435">GY543 // #23435</option>
+              <option value="RZ873 // #23435">RZ873 // #23435</option>
+              <option value="FT943 // #23435">FT943 // #23435</option>
+            </select>
           </div>
 
-          <div className="tab">
-            <Form.Group>
-              <Form.Label className="form-label">Current milage:</Form.Label>
-              <Form.Control
-                className="shadow-none"
-                type="number"
-                placeholder="1785"
-                name="mileage"
-                value={mileage}
-                onChange={(e) => {
-                  setMileage(e.target.value);
-                }}
-                required
-              />
-            </Form.Group>
+          <div className="flex flex-col my-4 px-5">
+            <label className="text-[#ececec] mb-2 text-xl">
+              Current milage:
+            </label>
+            <input
+              className="bg-transparent border-1 focus:outline-none focus:border-[#1ce5be] py-2 px-2 rounded-md text-[#1ce5be] text-lg"
+              type="number"
+              placeholder="1785"
+              name="mileage"
+              value={mileage}
+              onChange={(e) => {
+                setMileage(e.target.value);
+              }}
+              required
+            />
           </div>
 
-          <div className="tab">
-            <Form.Group>
-              <Form.Label className="form-label">General checklist:</Form.Label>
-              <Form.Check
-                className="shadow-none"
-                type="switch"
-                id="custom-switch"
-                label="Child seat"
-                name="generalCheck"
-                value="Child seat"
-                onChange={handleGeneralCheck}
-              />
-              <Form.Check
-                className="shadow-none"
-                type="switch"
-                id="custom-switch"
-                label="Charging cable"
-                name="generalCheck"
-                value="Charging cable"
-                onChange={handleGeneralCheck}
-              />
-              <Form.Check
-                className="shadow-none"
-                type="switch"
-                id="custom-switch"
-                label="Car is not dirty"
-                name="generalCheck"
-                value="Car is not dirty"
-                onChange={handleGeneralCheck}
-              />
-              <Form.Check
-                className="shadow-none"
-                type="switch"
-                id="custom-switch"
-                label="No visual damages"
-                name="generalCheck"
-                value="No visual damages"
-                onChange={handleGeneralCheck}
-              />
-            </Form.Group>
-          </div>
+          <div className="flex flex-col my-4 px-5">
+            <label className="text-[#ececec] mb-2 text-xl">
+              General checklist:
+            </label>
 
-          <div className="tab">
-            <Form.Group>
-              <Form.Label className="form-label">Service checklist:</Form.Label>
-              <Form.Check
-                className="shadow-none"
-                type="switch"
-                id="custom-switch"
-                label="Checked tire condition"
-                name="serviceCheck"
-                value="Tire condition"
-                onChange={handleServiceCheck}
-              />
-              <Form.Check
-                className="shadow-none"
-                type="switch"
-                id="custom-switch"
-                label="Filled windshield washer if needed"
-                name="serviceCheck"
-                value="Fill windshield"
-                onChange={handleServiceCheck}
-              />
-              <Form.Check
-                className="shadow-none"
-                type="switch"
-                id="custom-switch"
-                label="Washed outside if needed"
-                name="serviceCheck"
-                value="Wash outside"
-                onChange={handleServiceCheck}
-              />
-              <Form.Check
-                className="shadow-none"
-                type="switch"
-                id="custom-switch"
-                label="Cleaned dashboard and all plastic covers"
-                name="serviceCheck"
-                value="Clean dash"
-                onChange={handleServiceCheck}
-              />
-              <Form.Check
-                className="shadow-none"
-                type="switch"
-                id="custom-switch"
-                label="Cleaned windows inside"
-                name="serviceCheck"
-                value="Windows inside"
-                onChange={handleServiceCheck}
-              />
-              <Form.Check
-                className="shadow-none"
-                type="switch"
-                id="custom-switch"
-                label="Vacuum inside"
-                name="serviceCheck"
-                value="Vacuum inside"
-                onChange={handleServiceCheck}
-              />
-              <Form.Check
-                className="shadow-none"
-                type="switch"
-                id="custom-switch"
-                label="Washed floor mats"
-                name="serviceCheck"
-                value="Floor mats"
-                onChange={handleServiceCheck}
-              />
-            </Form.Group>
-          </div>
-
-          <div className="tab">
-            <Form.Group>
-              <Form.Label>Upload photos:</Form.Label>
-              <div className="custom-file">
-                <label className="custom-file-upload">
-                  <i className="fa fa-cloud-upload"></i> Click to add
+            <div className="flex my-1">
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-[#ececec] bg-no-repeat bg-contain focus:outline-none cursor-pointer shadow-sm"
+                  type="checkbox"
+                  id="custom-switch"
+                  name="generalCheck"
+                  value="Child seat"
+                  onChange={handleGeneralCheck}
+                />
+                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                  Child Seat
                 </label>
+              </div>
+            </div>
+
+            <div className="flex my-1">
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-[#ececec] bg-no-repeat bg-contain focus:outline-none cursor-pointer shadow-sm"
+                  type="checkbox"
+                  id="custom-switch"
+                  name="generalCheck"
+                  value="Charging cable"
+                  onChange={handleGeneralCheck}
+                />
+                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                  Charging cable
+                </label>
+              </div>
+            </div>
+
+            <div className="flex my-1">
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-[#ececec] bg-no-repeat bg-contain focus:outline-none cursor-pointer shadow-sm"
+                  type="checkbox"
+                  id="custom-switch"
+                  name="generalCheck"
+                  value="Car is not dirty"
+                  onChange={handleGeneralCheck}
+                />
+                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                  Car is not dirty
+                </label>
+              </div>
+            </div>
+
+            <div className="flex my-1">
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-[#ececec] bg-no-repeat bg-contain focus:outline-none cursor-pointer shadow-sm"
+                  type="checkbox"
+                  id="custom-switch"
+                  name="generalCheck"
+                  value="No visual damages"
+                  onChange={handleGeneralCheck}
+                />
+                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                  No visual damages
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col my-4 px-5">
+            <label className="text-[#ececec] mb-2 text-xl">
+              Service checklist:
+            </label>
+
+            <div className="flex my-1">
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-[#ececec] bg-no-repeat bg-contain focus:outline-none cursor-pointer shadow-sm"
+                  type="checkbox"
+                  id="custom-switch"
+                  name="serviceCheck"
+                  value="Tire condition"
+                  onChange={handleServiceCheck}
+                />
+                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                  Checked tire condition
+                </label>
+              </div>
+            </div>
+
+            <div className="flex my-1">
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-[#ececec] bg-no-repeat bg-contain focus:outline-none cursor-pointer shadow-sm"
+                  type="checkbox"
+                  id="custom-switch"
+                  name="serviceCheck"
+                  value="Fill windshield"
+                  onChange={handleServiceCheck}
+                />
+                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                  Filled windshield fluid (if needed)
+                </label>
+              </div>
+            </div>
+
+            <div className="flex my-1">
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-[#ececec] bg-no-repeat bg-contain focus:outline-none cursor-pointer shadow-sm"
+                  type="checkbox"
+                  id="custom-switch"
+                  name="serviceCheck"
+                  value="Wash outside"
+                  onChange={handleServiceCheck}
+                />
+                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                  Washed outside (if needed)
+                </label>
+              </div>
+            </div>
+
+            <div className="flex my-1">
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-[#ececec] bg-no-repeat bg-contain focus:outline-none cursor-pointer shadow-sm"
+                  type="checkbox"
+                  id="custom-switch"
+                  name="serviceCheck"
+                  value="Clean dash"
+                  onChange={handleServiceCheck}
+                />
+                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                  Cleaned dashboard and all plastic covers
+                </label>
+              </div>
+            </div>
+
+            <div className="flex my-1">
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-[#ececec] bg-no-repeat bg-contain focus:outline-none cursor-pointer shadow-sm"
+                  type="checkbox"
+                  id="custom-switch"
+                  name="serviceCheck"
+                  value="Windows inside"
+                  onChange={handleServiceCheck}
+                />
+                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                  Cleaned windows inside
+                </label>
+              </div>
+            </div>
+
+            <div className="flex my-1">
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-[#ececec] bg-no-repeat bg-contain focus:outline-none cursor-pointer shadow-sm"
+                  type="checkbox"
+                  id="custom-switch"
+                  name="serviceCheck"
+                  value="Vacuum inside"
+                  onChange={handleServiceCheck}
+                />
+                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                  Vacuum inside
+                </label>
+              </div>
+            </div>
+
+            <div className="flex my-1">
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-[#ececec] bg-no-repeat bg-contain focus:outline-none cursor-pointer shadow-sm"
+                  type="checkbox"
+                  id="custom-switch"
+                  name="serviceCheck"
+                  value="Floor mats"
+                  onChange={handleServiceCheck}
+                />
+                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                  Washed floor mats
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col my-4 px-5">
+            <label className="text-[#ececec] mb-2 text-xl">
+              Upload photos:
+            </label>
+
+            <div className="my-2">
+              <label>
                 <input
                   onChange={handleImages}
                   type="file"
                   id="file-upload"
-                  className="custom-file-input"
+                  className="text-sm text-[#ececec]
+                  file:mr-5 file:py-2 file:px-6
+                  file:rounded-full file:border-1
+                  file:border-[#1ce5be]
+                  file:text-sm file:font-medium
+                  file:bg-transparent file:text-[#1ce5be]
+                  hover:file:cursor-pointer"
                   name="images"
                   multiple="multiple"
                 />
+              </label>
+            </div>
+            {images.length > 0 && (
+              <div className="flex flex-wrap">
+                {images.map((image, index) => (
+                  <img
+                    className="w-20 mx-1 pt-3"
+                    alt="daily-car"
+                    src={image}
+                    key={index}
+                  />
+                ))}
               </div>
-              {images.length > 0 && (
-                <div className="upload-container">
-                  {images.map((image, index) => (
-                    <img
-                      className="uploaded-images"
-                      alt="daily-car"
-                      src={image}
-                      key={index}
-                    />
-                  ))}
-                </div>
-              )}
-            </Form.Group>
+            )}
           </div>
 
           {/* ---Btn Group--- */}
-          <div className="btn-container">
-            <Button className="btn">Cancel</Button>
-            <Button className="btn" type="submit">
+          <div className="flex items-center justify-center flex-col mt-10 mb-15">
+            <button className="border-1 px-20 py-2 rounded-full border-[#1ce5be] text-[#ececec] text-xl hover:text-[#ff5783]">
+              Cancel
+            </button>
+            <button
+              className="border-1 px-20 py-2 my-3 rounded-full border-[#1ce5be] text-[#ececec] text-xl hover:text-[#ff5783]"
+              type="submit"
+            >
               Submit
-            </Button>
+            </button>
           </div>
-        </Form>
+        </form>
       </div>
       <ToastContainer />
     </>
