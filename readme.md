@@ -1,47 +1,35 @@
-## ####### Hopp_Manager
+# Hopp Manager
 
-App created using React, Redux toolkit, nodeJS, expressJS
+Management application to improve workflow of employees and managers.
 
-[] - Login first time this date add modal window with
-{[ number.disabled.scooter,
-inactive scooters
-]}
-[] - dailibilar minimum 4 photos
-[] - add dailibilar as admin
-[] - cargo vechile status
-[] - total amount of shift report numbers + how many hoppers were on shift
-[] - individual user statistics(rating)
-[] - when user is deleted keep on database
-[] - shift report extra input of area that hopper was working in(radio buttons)
-[] - graph to show each users average per date and time//per shift numbers of shift report data
-[] - random password generator, user changes his password by himself
+### Installing
 
-// Extra
-[] - interaction score
-[] - separate day/evening/night shift
+A step by step series of examples that tell you how to get a development
+environment running
 
-### PROGRESS
+First command:
 
-[] Shift report
----[x]POST shift report
------[]Handle errors
------[]Handle loading
------[]Handle success
----[x]GET shift reports
------[]Filtering by user ID
------[]GET all posts that was created that day
------[]Handle loading
-[] Accident report
----[x]POST accident report
------[]Handle errors
------[]Handle loading
------[]Handle success
----[x]GET accident reports
------[]Handle loading
-[] Daily car report
----[x]POST daily car report
------[]Handle errors
------[]Handle loading
------[]Handle success
----[x]GET daily car report
------[]Handle loading
+    npm install
+
+Start dev server:
+
+    npm run dev
+
+## Built With
+
+<p align="left"> <a href="https://www.chartjs.org" target="_blank" rel="noreferrer"> <img src="https://www.chartjs.org/media/logo-title.svg" alt="chartjs" width="40" height="40"/> </a> <a href="https://expressjs.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> <a href="https://reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> </a> <a href="https://redux.js.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" alt="redux" width="40" height="40"/> </a> <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/> </a> </p>
+
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code
+of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [Semantic Versioning](http://semver.org/) for versioning. For the versions
+available, see the [tags on this
+repository](https://github.com/PurpleBooth/a-good-readme-template/tags).
+
+## Authors
+
+- **Augustas Matizonka**
