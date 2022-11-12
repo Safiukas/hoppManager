@@ -1,15 +1,11 @@
 import Header from "../../Layouts/Header/Header";
-import Footer from "../../Layouts/Footer/Footer";
-import AccidentForm from "../../Components/AccidentForm/AccidentForm";
-
-import React from "react";
+import AccidentForm from "../../Components/Forms/AccidentForm/AccidentForm";
 
 const AccidentReport = () => {
   return (
     <>
       <Header />
       <AccidentForm />
-      <Footer />
     </>
   );
 };

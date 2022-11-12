@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 import FormLabel from "react-bootstrap/esm/FormLabel";
 import Form from "react-bootstrap/Form";
-import { createEmployee, reset } from "../../Features/team/teamSlice";
+import { createEmployee, reset } from "../../../Features/team/teamSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";

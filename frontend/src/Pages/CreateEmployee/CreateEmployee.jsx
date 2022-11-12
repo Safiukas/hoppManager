@@ -1,7 +1,6 @@
-import React from "react";
 import Footer from "../../Layouts/Footer/Footer";
 import AdminHeader from "../../Layouts/Header/AdminHeader";
-import EmployeeComponent from "../../Components/EmployeeComponent/EmployeeComponent";
+import EmployeeComponent from "../../Components/Forms/EmployeeForm/EmployeeComponent";
 
 const CreateEmployee = () => {
   return (

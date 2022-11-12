@@ -1,26 +1,15 @@
-import { createCarReport } from "../../Features/carReport/carReportSlice";
+import { createCarReport } from "../../../Features/carReport/carReportSlice";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
+import Spinner from "../../Spinner/Spinner";
 
 const notify = (message) =>
   toast.warn(message, {
     position: "top-left",
     autoClose: 2000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-  });
-
-const loadingToast = (message) =>
-  toast.warn(message, {
-    position: "top-left",
-    autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
@@ -155,12 +144,12 @@ const DailyCarForm = () => {
       };
 
       dispatch(createCarReport(carReportData));
-      // successToast("Deilibilar report created!");
+      successToast("Report created!");
     }
   };
 
   if (isLoading) {
-    loadingToast("Loading...");
+    <Spinner />;
   }
 
   return (

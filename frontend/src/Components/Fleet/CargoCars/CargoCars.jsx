@@ -1,4 +1,3 @@
-import "../../CarReportTable/CarReportTable.css";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
 

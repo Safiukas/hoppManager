@@ -1,8 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../Features/Auth/authSlice";
-import Dropdown from "react-bootstrap/Dropdown";
-import "../../Assets/Styles/UserDropdown.css";
+
+import { Fragment, useEffect } from "react";
+import { Menu, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
 const UserDropdown = () => {
   const { user } = useSelector((state) => state.auth);
@@ -10,30 +16,104 @@ const UserDropdown = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
+
   const handleLogOut = async (e) => {
     try {
-      dispatch(logout());
-      navigate("/");
+      e.preventDefault();
+      await dispatch(logout());
+      await navigate("/");
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <Dropdown className="shadow-none">
-      <Dropdown.Toggle className="dropdown-toggle" id="dropdown-basic">
-        {user && user.firstName}
-      </Dropdown.Toggle>
+    <>
+      <Menu as="div" className="relative inline-block text-left">
+        <div>
+          <Menu.Button className="inline-flex w-full border-b-2 border-[#1ce5be] justify-center px-4 py-2 text-lg font-medium text-[#ff5783] focus:outline-none">
+            {user.firstName}
+            <ChevronDownIcon
+              className="-mr-1 ml-2 h-7 w-7"
+              aria-hidden="true"
+            />
+          </Menu.Button>
+        </div>
 
-      <Dropdown.Menu className="dropdown-menu">
-        <Link to="/dashboard">
-          <Dropdown.Item>Dashboard</Dropdown.Item>
-        </Link>
-        <Dropdown.Item>My Rating</Dropdown.Item>
-        <Dropdown.Item>Settings</Dropdown.Item>
-        <Dropdown.Item onClick={handleLogOut}>Log Out</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+        <Transition
+          as={Fragment}
+          enter="transition ease-out duration-100"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-75"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95"
+        >
+          <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-[#1f2022] shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <div className="py-1">
+              <Menu.Item>
+                {({ active }) => (
+                  <Link
+                    to="#"
+                    className={classNames(
+                      active ? "bg-gray-900 text-[#ff5783]" : "text-[#ececec]",
+                      "block px-4 py-2 text-lg"
+                    )}
+                  >
+                    My profile
+                  </Link>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <Link
+                    to="#"
+                    className={classNames(
+                      active ? "bg-gray-900 text-[#ff5783]" : "text-[#ececec]",
+                      "block px-4 py-2 text-lg"
+                    )}
+                  >
+                    Settings
+                  </Link>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <Link
+                    to="#"
+                    className={classNames(
+                      active ? "bg-gray-900 text-[#ff5783]" : "text-[#ececec]",
+                      "block px-4 py-2 text-lg"
+                    )}
+                  >
+                    Bug report
+                  </Link>
+                )}
+              </Menu.Item>
+
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    onClick={handleLogOut}
+                    className={classNames(
+                      active ? "bg-gray-900 text-[#ff5783]" : "text-[#ececec]",
+                      "block w-full px-4 py-2 text-left text-lg"
+                    )}
+                  >
+                    Sign out
+                  </button>
+                )}
+              </Menu.Item>
+            </div>
+          </Menu.Items>
+        </Transition>
+      </Menu>
+    </>
   );
 };
 

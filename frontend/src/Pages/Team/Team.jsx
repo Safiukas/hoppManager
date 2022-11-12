@@ -1,5 +1,5 @@
-import Captains from "../../Components/Captains/Captains";
-import Hoppers from "../../Components/Hoppers/Hoppers";
+import Captains from "../../Components/Team/Captains/Captains";
+import Hoppers from "../../Components/Team/Hoppers/Hoppers";
 import Footer from "../../Layouts/Footer/Footer";
 import AdminHeader from "../../Layouts/Header/AdminHeader";
 import { useNavigate } from "react-router-dom";

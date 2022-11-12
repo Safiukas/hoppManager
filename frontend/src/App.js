@@ -14,10 +14,10 @@ import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import AdminReports from "./Pages/AdminReports/AdminReports";
 import Team from "./Pages/Team/Team";
 import CreateEmployee from "./Pages/CreateEmployee/CreateEmployee";
-import CarReportTable from "./Components/CarReportTable/CarReportTable";
-import Hoppers from "./Components/Hoppers/Hoppers";
-import Captains from "./Components/Captains/Captains";
-import CarReport from "./Components/CarReport/CarReport";
+import CarReportTable from "./Components/Tables/CarReportTable/CarReportTable";
+import Hoppers from "./Components/Team/Hoppers/Hoppers";
+import Captains from "./Components/Team/Captains/Captains";
+import CarReport from "./Components/SingleComponents/CarReport/CarReport";
 import Fleet from "./Pages/Fleet/Fleet";
 
 const router = createBrowserRouter(

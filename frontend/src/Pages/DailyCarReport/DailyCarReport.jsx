@@ -1,5 +1,4 @@
-import React from "react";
-import DailyCarForm from "../../Components/DailyCarForm/DailyCarForm";
+import DailyCarForm from "../../Components/Forms/DailyCarForm/DailyCarForm";
 import { Header } from "../../Layouts/Header/Header";
 
 const DailyCarReport = () => {
