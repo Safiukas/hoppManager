@@ -1,12 +1,10 @@
 import { useState } from "react";
-import Button from "react-bootstrap/esm/Button";
-import FormLabel from "react-bootstrap/esm/FormLabel";
-import Form from "react-bootstrap/Form";
 import { createEmployee, reset } from "../../../Features/team/teamSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import Spinner from "../../Spinner/Spinner";
 
 const notify = (message) => toast(message);
 
@@ -47,31 +45,11 @@ const EmployeeComponent = () => {
     if (isError) {
       // Fire error modal
       console.log(message);
-      notify.error(message, {
-        position: "top-left",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
     }
 
     if (isSuccess) {
       //Fire success modal
-      notify.success("Employee created successfully!", {
-        position: "top-left",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-      navigate("/dashboard/team");
+      // navigate("/dashboard/team");
     }
 
     dispatch(reset());
@@ -90,16 +68,7 @@ const EmployeeComponent = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      notify.warn("Passwords don't match!", {
-        position: "top-left",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+      console.log("Passwords don't match!");
     } else {
       const employeeData = {
         firstName,
@@ -117,20 +86,18 @@ const EmployeeComponent = () => {
 
   if (isLoading) {
     //Fire loading spinner
-    console.log("Loading");
-    notify("Loading...");
+    <Spinner />;
   }
 
   return (
     <>
-      {/* TODO: Create title */}
-
-      <section className="form-container">
-        <Form onSubmit={onSubmit}>
-          <Form.Group className="form-outline mb-4">
-            <FormLabel className="form-label">First name:</FormLabel>
-            <Form.Control
-              className="form-control shadow-none"
+      <div className="w-screen mt-3 flex items-center flex-col justify-center">
+        <h3 className="text-2xl text-[#ff5783] uppercase">New employee</h3>
+        <form onSubmit={onSubmit}>
+          <div className="flex flex-col my-4">
+            <label className="text-[#ececec] mb-2 text-lg">First name:</label>
+            <input
+              className="bg-transparent border-1 focus:outline-none focus:border-[#1ce5be] py-2 px-2 rounded-md text-[#1ce5be] text-lg"
               type="text"
               placeholder="First name"
               id="firstName"
@@ -140,12 +107,12 @@ const EmployeeComponent = () => {
               required
               onChange={onChange}
             />
-          </Form.Group>
+          </div>
 
-          <Form.Group className="form-outline mb-4">
-            <FormLabel className="form-label">Middle name:</FormLabel>
-            <Form.Control
-              className="form-control shadow-none"
+          <div className="flex flex-col my-4">
+            <label className="text-[#ececec] mb-2 text-lg">Middle name:</label>
+            <input
+              className="bg-transparent border-1 focus:outline-none focus:border-[#1ce5be] py-2 px-2 rounded-md text-[#1ce5be] text-lg"
               type="text"
               placeholder="Middle name"
               id="middleName"
@@ -154,12 +121,12 @@ const EmployeeComponent = () => {
               autoComplete="off"
               onChange={onChange}
             />
-          </Form.Group>
+          </div>
 
-          <Form.Group className="form-outline mb-4">
-            <FormLabel className="form-label">Last name:</FormLabel>
-            <Form.Control
-              className="form-control shadow-none"
+          <div className="flex flex-col my-4">
+            <label className="text-[#ececec] mb-2 text-lg">Last name:</label>
+            <input
+              className="bg-transparent border-1 focus:outline-none focus:border-[#1ce5be] py-2 px-2 rounded-md text-[#1ce5be] text-lg"
               type="text"
               placeholder="Last name"
               id="lastName"
@@ -169,12 +136,12 @@ const EmployeeComponent = () => {
               required
               onChange={onChange}
             />
-          </Form.Group>
+          </div>
 
-          <Form.Group className="form-outline mb-4">
-            <FormLabel className="form-label">Phone number:</FormLabel>
-            <Form.Control
-              className="form-control shadow-none"
+          <div className="flex flex-col my-4">
+            <label className="text-[#ececec] mb-2 text-lg">Phone number:</label>
+            <input
+              className="bg-transparent border-1 focus:outline-none focus:border-[#1ce5be] py-2 px-2 rounded-md text-[#1ce5be] text-lg"
               type="tel"
               placeholder="7775983"
               id="phoneNumber"
@@ -184,12 +151,14 @@ const EmployeeComponent = () => {
               required
               onChange={onChange}
             />
-          </Form.Group>
+          </div>
 
-          <Form.Group className="form-outline mb-4">
-            <FormLabel className="form-label">Email address:</FormLabel>
-            <Form.Control
-              className="form-control shadow-none"
+          <div className="flex flex-col my-4">
+            <label className="text-[#ececec] mb-2 text-lg">
+              Email address:
+            </label>
+            <input
+              className="bg-transparent border-1 focus:outline-none focus:border-[#1ce5be] py-2 px-2 rounded-md text-[#1ce5be] text-lg"
               type="email"
               placeholder="john.johnsson@gmail.com"
               id="email"
@@ -199,12 +168,12 @@ const EmployeeComponent = () => {
               required
               onChange={onChange}
             />
-          </Form.Group>
+          </div>
 
-          <Form.Group className="form-outline mb-4">
-            <Form.Label className="form-label">Role:</Form.Label>
-            <Form.Select
-              className="form-select shadow-none"
+          <div className="flex flex-col my-4">
+            <label className="text-[#ececec] mb-2 text-lg">Role:</label>
+            <select
+              className="bg-transparent border-1 focus:outline-none focus:border-[#1ce5be] py-2 px-2 rounded-md text-[#1ce5be] text-lg"
               aria-label="Role"
               name="role"
               value={role}
@@ -214,14 +183,14 @@ const EmployeeComponent = () => {
               <option>Select role</option>
               <option value="Captain">Captain</option>
               <option value="Hopper">Hopper</option>
-            </Form.Select>
-          </Form.Group>
+            </select>
+          </div>
 
           {/* TODO: Add functionality to view password  */}
-          <Form.Group className="form-outline mb-4">
-            <FormLabel className="form-label">Password</FormLabel>
-            <Form.Control
-              className="form-control shadow-none"
+          <div className="flex flex-col my-4">
+            <label className="text-[#ececec] mb-2 text-lg">Password</label>
+            <input
+              className="bg-transparent border-1 focus:outline-none focus:border-[#1ce5be] py-2 px-2 rounded-md text-[#1ce5be] text-lg"
               type="password"
               placeholder="Enter password"
               id="password"
@@ -230,12 +199,14 @@ const EmployeeComponent = () => {
               required
               onChange={onChange}
             />
-          </Form.Group>
+          </div>
 
-          <Form.Group className="form-outline mb-4">
-            <FormLabel className="form-label">Repeat password</FormLabel>
-            <Form.Control
-              className="form-control shadow-none"
+          <div className="flex flex-col my-4">
+            <label className="text-[#ececec] mb-2 text-lg">
+              Repeat password
+            </label>
+            <input
+              className="bg-transparent border-1 focus:outline-none focus:border-[#1ce5be] py-2 px-2 rounded-md text-[#1ce5be] text-lg"
               type="password"
               placeholder="Repeat password"
               id="confirmPassword"
@@ -244,16 +215,20 @@ const EmployeeComponent = () => {
               required
               onChange={onChange}
             />
-          </Form.Group>
-          <div className="btnContainer">
-            <Button className="create-btn shadow-none" type="submit">
-              Create
-            </Button>
-            {/* // TODO: Cancel btn e => route back */}
-            <Button className="create-btn shadow-none">Cancel</Button>
           </div>
-        </Form>
-      </section>
+          <div className="flex items-center justify-center flex-col mt-10 mb-15">
+            <button className="border-1 px-20 py-2 rounded-full border-[#1ce5be] text-[#ececec] text-xl hover:text-[#ff5783]">
+              Cancel
+            </button>
+            <button
+              className="border-1 px-20 py-2 my-3 rounded-full border-[#1ce5be] text-[#ececec] text-xl hover:text-[#ff5783]"
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
       <ToastContainer />
     </>
   );

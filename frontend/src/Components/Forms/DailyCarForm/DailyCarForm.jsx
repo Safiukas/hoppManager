@@ -211,7 +211,7 @@ const DailyCarForm = () => {
                   value="Child seat"
                   onChange={handleGeneralCheck}
                 />
-                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                <label className="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
                   Child Seat
                 </label>
               </div>
@@ -227,7 +227,7 @@ const DailyCarForm = () => {
                   value="Charging cable"
                   onChange={handleGeneralCheck}
                 />
-                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                <label className="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
                   Charging cable
                 </label>
               </div>
@@ -243,7 +243,7 @@ const DailyCarForm = () => {
                   value="Car is not dirty"
                   onChange={handleGeneralCheck}
                 />
-                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                <label className="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
                   Car is not dirty
                 </label>
               </div>
@@ -259,7 +259,7 @@ const DailyCarForm = () => {
                   value="No visual damages"
                   onChange={handleGeneralCheck}
                 />
-                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                <label className="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
                   No visual damages
                 </label>
               </div>
@@ -281,7 +281,7 @@ const DailyCarForm = () => {
                   value="Tire condition"
                   onChange={handleServiceCheck}
                 />
-                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                <label className="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
                   Checked tire condition
                 </label>
               </div>
@@ -297,7 +297,7 @@ const DailyCarForm = () => {
                   value="Fill windshield"
                   onChange={handleServiceCheck}
                 />
-                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                <label className="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
                   Filled windshield fluid (if needed)
                 </label>
               </div>
@@ -313,7 +313,7 @@ const DailyCarForm = () => {
                   value="Wash outside"
                   onChange={handleServiceCheck}
                 />
-                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                <label className="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
                   Washed outside (if needed)
                 </label>
               </div>
@@ -329,7 +329,7 @@ const DailyCarForm = () => {
                   value="Clean dash"
                   onChange={handleServiceCheck}
                 />
-                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                <label className="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
                   Cleaned dashboard and all plastic covers
                 </label>
               </div>
@@ -345,7 +345,7 @@ const DailyCarForm = () => {
                   value="Windows inside"
                   onChange={handleServiceCheck}
                 />
-                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                <label className="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
                   Cleaned windows inside
                 </label>
               </div>
@@ -361,7 +361,7 @@ const DailyCarForm = () => {
                   value="Vacuum inside"
                   onChange={handleServiceCheck}
                 />
-                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                <label className="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
                   Vacuum inside
                 </label>
               </div>
@@ -377,7 +377,7 @@ const DailyCarForm = () => {
                   value="Floor mats"
                   onChange={handleServiceCheck}
                 />
-                <label class="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
+                <label className="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
                   Washed floor mats
                 </label>
               </div>

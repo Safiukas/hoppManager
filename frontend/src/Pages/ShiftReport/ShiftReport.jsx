@@ -1,16 +1,9 @@
-import Header from "../../Layouts/Header/Header";
-
-import ShiftReportForm from "../../Components/ShiftReportForm/ShiftReportForm";
-
-import React from "react";
+import ShiftReportForm from "../../Components/Forms/ShiftReportForm/ShiftReportForm";
 
 const ShiftReport = () => {
   return (
     <>
-      <main>
-        <Header />
-        <ShiftReportForm />
-      </main>
+      <ShiftReportForm />
     </>
   );
 };

@@ -55,7 +55,7 @@ const AccidentForm = () => {
               onChange={(e) => {
                 setLocation(e.target.value);
               }}
-              class="
+              className="
                   form-control
                   block
                   w-full
@@ -88,7 +88,7 @@ const AccidentForm = () => {
               onChange={(e) => {
                 setAccident(e.target.value);
               }}
-              class="
+              className="
                   form-control
                   block
                   w-full

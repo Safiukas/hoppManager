@@ -18,6 +18,26 @@ export const SidebarData = [
     icon: <AiIcons.AiOutlineTeam />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
+
+    subNav: [
+      {
+        title: "New employee",
+        path: "/dashboard/team/create",
+        icon: <IoIcons.IoIosPaper />,
+        cName: "sub-nav",
+      },
+      {
+        title: "Hoppers",
+        path: "/dashboard/team/hoppers",
+        icon: <IoIcons.IoIosPaper />,
+        cName: "sub-nav",
+      },
+      {
+        title: "Captains",
+        path: "/dashboard/team/captains",
+        icon: <IoIcons.IoIosPaper />,
+      },
+    ],
   },
   {
     title: "Reports",

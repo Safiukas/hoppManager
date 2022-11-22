@@ -22,7 +22,7 @@ const CarReportTable = (props) => {
   }
 
   return (
-    <div className="body">
+    <div className="">
       <section className="flex items-center flex-col justify-center text-[#ececec]">
         <div className="text-2xl my-3 text-[#ff5783] uppercase">
           <h3>Deilibilar reports</h3>
@@ -64,7 +64,7 @@ const CarReportTable = (props) => {
                       className="text-[#ececec] hover:text-[#1ce5be]"
                       to={`/dashboard/dailyCarReports/${report._id}`}
                     >
-                      <HiDocumentSearch className="view-icon" />
+                      <HiDocumentSearch className="text-xl" />
                     </Link>
                   </td>
                 </tr>

@@ -9,8 +9,6 @@ import {
   FaTruck,
 } from "react-icons/fa";
 import { BiTask } from "react-icons/bi";
-import { Header } from "../../Layouts/Header/Header";
-import { Footer } from "../../Layouts/Footer/Footer";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -28,7 +26,6 @@ const CaptainHome = () => {
 
   return (
     <div className="container h-100" id="menu-container">
-      <Header />
       <div className="row align-middle">
         <HomeNav title="News & Feed" icon={<FaNewspaper />} />
         <HomeNav
@@ -50,7 +47,6 @@ const CaptainHome = () => {
         <HomeNav title="Tasks" icon={<BiTask />} />
         <HomeNav title="Dashboard" route="/dashboard" icon={<BiTask />} />
       </div>
-      <Footer />
     </div>
   );
 };

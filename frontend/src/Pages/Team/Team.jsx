@@ -1,7 +1,5 @@
 import Captains from "../../Components/Team/Captains/Captains";
 import Hoppers from "../../Components/Team/Hoppers/Hoppers";
-import Footer from "../../Layouts/Footer/Footer";
-import AdminHeader from "../../Layouts/Header/AdminHeader";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -19,17 +17,11 @@ const Team = () => {
 
   return (
     <>
-      <header>
-        <AdminHeader />
-      </header>
-      <div className="title">
-        <h2>My team</h2>
+      <div className="flex items-center justify-center my-10">
+        <h2 className="text-4xl uppercase font-bold text-[#ececec]">My team</h2>
       </div>
       <Hoppers />
       <Captains />
-      <Footer>
-        <Footer />
-      </Footer>
     </>
   );
 };
