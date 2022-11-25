@@ -9,19 +9,6 @@ import Spinner from "../../Components/Spinner/Spinner";
 const loginImage = require("../../Assets/Images/login-image.jpg");
 const hoppLogo = require("../../Assets/Images/logo.jpg");
 
-const successToast = (message) => {
-  toast.success(message, {
-    position: "top-left",
-    autoClose: 2000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-  });
-};
-
 const errToast = (message) =>
   toast.error(message, {
     position: "top-left",
@@ -68,7 +55,8 @@ const Login = () => {
 
     if (isSuccess || user) {
       navigate("/home");
-      successToast("Logged in successfully!");
+    } else {
+      navigate("/");
     }
 
     dispatch(reset());
@@ -84,17 +72,18 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (email === "") {
-      notify("Please enter your email!");
-    }
-    if (password === "") {
-      notify("Please enter password!");
-    }
-
     const userData = {
       email,
       password,
     };
+
+    if (email === "") {
+      notify("Please enter your email!");
+    }
+
+    if (password === "") {
+      notify("Please enter password!");
+    }
 
     dispatch(login(userData));
   };
@@ -127,7 +116,6 @@ const Login = () => {
                   value={email}
                   onChange={onChange}
                   autoComplete="off"
-                  required
                 />
               </div>
 
@@ -140,7 +128,6 @@ const Login = () => {
                   name="password"
                   value={password}
                   onChange={onChange}
-                  required
                 />
               </div>
 

@@ -8,7 +8,6 @@ import CaptainHome from "./Pages/CaptainHome/CaptainHome";
 import AccidentReport from "./Pages/AccidentReport/AccidentReport";
 import ShiftReport from "./Pages/ShiftReport/ShiftReport";
 import Login from "./Pages/Login/Login";
-import Root from "./Pages/Root/Root";
 import DailyCarReport from "./Pages/DailyCarReport/DailyCarReport";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import AdminReports from "./Pages/AdminReports/AdminReports";
@@ -24,7 +23,7 @@ import AdminLayout from "./Layouts/Layout/AdminLayout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Root />}>
+    <Route path="/">
       <Route path="/" element={<Login />} />
 
       <Route path="/home" element={<Layout />}>
