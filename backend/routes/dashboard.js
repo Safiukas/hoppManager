@@ -5,6 +5,7 @@ import {
   getHoppers,
   getCaptains,
 } from "../controllers/teamController.js";
+import { createFleet } from "../controllers/fleet.js";
 
 const router = express.Router();
 
@@ -18,5 +19,10 @@ router.get("/team/hoppers", protect, getHoppers);
 
 //GET Captains
 router.get("/team/captains", protect, getCaptains);
+
+// FLEET
+// POST fleet
+// 1. Deilibilar
+router.post("/fleet/createNewDeilibilar", protect, createFleet);
 
 export default router;

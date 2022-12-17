@@ -1,28 +1,32 @@
 import mongoose, { Schema } from "mongoose";
 
-const DailyCarReportSchema = new mongoose.Schema(
+const FleetSchema = new mongoose.Schema(
   {
-    userId: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
     licensePlate: {
       type: String,
       require: true,
     },
     mileage: {
+      type: Number,
+      require: true,
+    },
+    qrCode: {
+      type: String,
+      require: true,
+    },
+    make: {
+      type: String,
+      require: true,
+    },
+    model: {
       type: String,
       require: true,
     },
     generalCheck: {
-      type: [],
+      type: Object,
       require: true,
     },
-    serviceCheck: {
-      type: [],
-      require: true,
-    },
-    images: [
+    image: [
       {
         public_id: {
           type: String,
@@ -40,4 +44,4 @@ const DailyCarReportSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("DailyCarReport", DailyCarReportSchema);
+export default mongoose.model("Fleet", FleetSchema);

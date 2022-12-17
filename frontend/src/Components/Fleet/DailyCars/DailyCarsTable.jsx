@@ -1,23 +1,35 @@
-import Button from "react-bootstrap/esm/Button";
 import { Link } from "react-router-dom";
 
 const DailyCarsTable = () => {
   return (
-    <div className="body">
-      <section className="table-container">
-        <div className="title">
+    <div className="mt-10">
+      <section className="flex items-center flex-col justify-center text-[#ececec]">
+        <div className="text-2xl my-3 text-[#ff5783] uppercase">
           <h3>Deilibilars</h3>
         </div>
 
         <table>
           <tbody>
-            <tr className="table-header">
-              <th>Id:</th>
-              <th>License plate:</th>
-              <th>QR code:</th>
-              <th>Make and model:</th>
-              <th>Created by:</th>
-              <th>Date created:</th>
+            <tr className="text-center">
+              <th className="text-[#1ce5be] pr-3 text-center pb-2">Id:</th>
+              <th className="text-[#1ce5be] pr-3 text-center pb-2">
+                License plate / QR code:
+              </th>
+              <th className="text-[#1ce5be] pr-3 text-center pb-2">
+                Make & model:
+              </th>
+              <th className="text-[#1ce5be] pr-3 text-center pb-2">
+                Created by:
+              </th>
+              <th className="text-[#1ce5be] pr-3 text-center pb-2">
+                Current mileage:
+              </th>
+              <th className="text-[#1ce5be] pr-3 text-center pb-2">
+                Last report:
+              </th>
+              <th className="text-[#1ce5be] pr-3 text-center pb-2">
+                Date created:
+              </th>
             </tr>
             {/* {carReports.map((report, index) => {
               return (
@@ -42,9 +54,16 @@ const DailyCarsTable = () => {
             })} */}
           </tbody>
         </table>
-        <div className="btn-container">
-          <Link to="/dashboard/dailyCars">
-            <Button className="create-btn shadow-none">View all</Button>
+        <div className="flex justify-between mt-5 w-80">
+          <Link to="/dashboard/allFleet/deilibilar/createNew">
+            <button className="border-1 px-10 py-2 rounded-full border-[#1ce5be] text-[#ececec] text-md hover:text-[#ff5783]">
+              + New
+            </button>
+          </Link>
+          <Link to="/dashboard/deilibilar">
+            <button className="border-1 px-10 py-2 rounded-full border-[#1ce5be] text-[#ececec] text-md hover:text-[#ff5783]">
+              View all
+            </button>
           </Link>
         </div>
       </section>

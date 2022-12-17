@@ -141,31 +141,31 @@ const CarReport = () => {
             <span className="text-[#ff5783] text-lg font-semibold mb-2">
               General checklist:
             </span>
-            <div className="flex flex-col mb-3">
+            {/* <div className="flex flex-col mb-3">
               <ul className="text-[#ececec]">
-                {singleReport.generalCheck[0]?.checklist.map((check, index) => (
+                {singleReport.generalCheck[0].checklist.map((check, index) => (
                   <li key={index} className="flex mb-1 text-lg items-center">
                     <HiCheck className="text-[#1ce5be] mr-2 mt-1" />
                     {check}
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
           </div>
           <div className="flex flex-col">
             <span className="text-[#ff5783] text-lg font-semibold mb-2">
               Service checklist:
             </span>
-            <div className="flex flex-col">
+            {/* <div className="flex flex-col">
               <ul className="text-[#ececec]">
-                {singleReport.serviceCheck[0]?.checklist.map((check, index) => (
+                {singleReport.serviceCheck[0].checklist.map((check, index) => (
                   <li key={index} className="flex mb-1 text-lg items-center">
                     <HiCheck className="text-[#1ce5be] mr-2" />
                     {check}
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
           </div>
           <div className="flex flex-col ">
             <span className="text-[#ff5783] text-lg font-semibold mb-3">

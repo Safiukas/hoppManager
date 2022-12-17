@@ -71,9 +71,7 @@ const DailyCarForm = () => {
     });
   };
 
-  //TODO: handle checkbox
   const handleGeneralCheck = (e) => {
-    // Destructuring
     const { value, checked } = e.target;
     const { checklist } = generalCheck;
 
@@ -93,7 +91,6 @@ const DailyCarForm = () => {
   };
 
   const handleServiceCheck = (e) => {
-    // Destructuring
     const { value, checked } = e.target;
     const { checklist } = serviceCheck;
 
