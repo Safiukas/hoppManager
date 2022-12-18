@@ -1,4 +1,4 @@
-import { createNewDeilibilar } from "../../../Features/newFleet/fleetSlice";
+import { createNewCargo } from "./../../../Features/newFleet/fleetSlice";
 import { useState } from "react";
 import { BiImageAdd } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
@@ -45,16 +45,11 @@ const successToast = (message) => {
   });
 };
 
-const NewFleet = (props) => {
+const NewCargo = (props) => {
   const [licensePlate, setLicensePlate] = useState("");
   const [mileage, setMileage] = useState("");
   const [qrCode, setQrCode] = useState("");
-  const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
-  const [generalCheck, setGeneralCheck] = useState({
-    checklist: [],
-    response: [],
-  });
   const [image, setImage] = useState([]);
 
   const handleImages = (e) => {
@@ -66,25 +61,6 @@ const NewFleet = (props) => {
         setImage((prevState) => [...prevState, reader.result]);
       };
     });
-  };
-
-  const handleGeneralCheck = (e) => {
-    const { value, checked } = e.target;
-    const { checklist } = generalCheck;
-
-    // Case 1 : The user checks the box
-    if (checked) {
-      setGeneralCheck({
-        checklist: [...checklist, value],
-      });
-    }
-
-    // Case 2  : The user unchecks the box
-    else {
-      setGeneralCheck({
-        checklist: checklist.filter((e) => e !== value),
-      });
-    }
   };
 
   const dispatch = useDispatch();
@@ -106,17 +82,23 @@ const NewFleet = (props) => {
     if (image.length === 0) {
       notify("Please upload image!");
     } else {
-      const fleetData = {
+      const cargoData = {
         licensePlate,
         mileage,
         qrCode,
-        brand,
         model,
-        generalCheck,
         image,
       };
-      dispatch(createNewDeilibilar(fleetData));
-      successToast("New deilibilar created successfully!");
+      dispatch(createNewCargo(cargoData));
+    }
+
+    if (isSuccess) {
+      successToast("New cargo vehicle created successfully!");
+      setLicensePlate("");
+      setMileage("");
+      setQrCode("");
+      setModel("");
+      setImage([]);
     }
   };
 
@@ -124,12 +106,9 @@ const NewFleet = (props) => {
     return <Spinner />;
   }
 
-  // if (isSuccess) {
-  //   successToast("New deilibilar created successfully!");
-  // }
-
   return (
     <>
+      <h1>Hello</h1>
       <div className="w-full flex items-center flex-col justify-center">
         <h3 className="text-2xl my-5 text-[#ff5783] uppercase">
           {props.title}
@@ -138,9 +117,9 @@ const NewFleet = (props) => {
           {/* ---- */}
           <div className="flex items-center flex-row justify-between">
             {/* --- */}
-            <div className="flex flex-col items-center justify-center">
-              <div className="flex flex-col my-4 px-5">
-                <div className="my-2">
+            <div className="flex flex-col items-center justify-between">
+              <div className="flex flex-col px-5">
+                <div className="my-2 items-center justify-between">
                   <label>
                     {image.length > 0 ? (
                       <div className="flex items-center justify-center">
@@ -179,7 +158,7 @@ const NewFleet = (props) => {
             </div>
 
             <div className="flex flex-col justify-center">
-              <div className="flex flex-row items-center justify-center my-4 px-5">
+              <div className="flex flex-row items-center justify-between my-4 px-5">
                 <label className="text-[#ececec] text-center mx-2 text-xl">
                   License plate:
                 </label>
@@ -195,7 +174,7 @@ const NewFleet = (props) => {
                 />
               </div>
 
-              <div className="flex flex-row items-center justify-center my-4 px-5">
+              <div className="flex flex-row items-center justify-between my-4 px-5">
                 <label className="text-[#ececec] text-center mx-2 text-xl">
                   Mileage:
                 </label>
@@ -211,11 +190,11 @@ const NewFleet = (props) => {
                 />
               </div>
 
-              <div className="flex flex-row items-center justify-center my-4 px-5">
+              <div className="flex flex-row items-center justify-between my-4 px-5">
                 <label className="text-[#ececec] mx-2 text-xl">QR code:</label>
                 <input
                   className="bg-transparent border-1 focus:outline-none focus:border-[#1ce5be] py-2 px-2 rounded-md text-[#1ce5be] text-lg"
-                  type="text"
+                  type="number"
                   placeholder="#33855"
                   name="qrCode"
                   value={qrCode}
@@ -225,24 +204,6 @@ const NewFleet = (props) => {
                 />
               </div>
             </div>
-          </div>
-
-          <div className="flex flex-col my-4 px-5">
-            <label className="text-[#ececec] mb-2 text-xl">Make:</label>
-            <select
-              className="bg-[#1f2022] text-[#1ce5be] border-[#ececec] border-1 focus:border-[#ececec] inline-block py-2 px-2 rounded-md text-lg leading-tight"
-              name="brand"
-              value={brand}
-              onChange={(e) => {
-                setBrand(e.target.value);
-              }}
-            >
-              <option>Select</option>
-              <option value="KIA">KIA</option>
-              <option value="HYUNDAI">HYUNDAI</option>
-              <option value="RENAULT">RENAULT</option>
-              <option value="OPEL">OPEL</option>
-            </select>
           </div>
 
           <div className="flex flex-col my-4 px-5">
@@ -256,47 +217,11 @@ const NewFleet = (props) => {
               }}
             >
               <option>Select</option>
-              <option value="niro">KIA // NIRO</option>
-              <option value="kona">HYUNDAI // KONA</option>
-              <option value="zoe">RENAULT // ZOE</option>
-              <option value="corsa">OPEL // CORSA</option>
+              <option value="NISSAN / e-NV200">NISSAN // e-NV200</option>
+              <option value="MAXXUS / E-DELIVER">MAXXUS // E-DELIVER 3</option>
+              <option value="RENAULT / ZOE">RENAULT // ZOE</option>
+              <option value="BYD / T3">BYD // T3</option>
             </select>
-          </div>
-
-          <div className="flex flex-col my-4 px-5">
-            <label className="text-[#ececec] mb-2 text-xl">Comes with:</label>
-
-            <div className="flex my-1">
-              <div className="form-check form-switch">
-                <input
-                  className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-[#ececec] bg-no-repeat bg-contain focus:outline-none cursor-pointer shadow-sm"
-                  type="checkbox"
-                  id="custom-switch"
-                  name="generalCheck"
-                  value="Child seat"
-                  onChange={handleGeneralCheck}
-                />
-                <label className="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
-                  Child Seat
-                </label>
-              </div>
-            </div>
-
-            <div className="flex my-1">
-              <div className="form-check form-switch">
-                <input
-                  className="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-[#ececec] bg-no-repeat bg-contain focus:outline-none cursor-pointer shadow-sm"
-                  type="checkbox"
-                  id="custom-switch"
-                  name="generalCheck"
-                  value="Charging cable"
-                  onChange={handleGeneralCheck}
-                />
-                <label className="form-check-label inline-block text-[#1ce5be] mb-2 text-lg">
-                  Charging cable under trunk
-                </label>
-              </div>
-            </div>
           </div>
 
           {/* ---Btn Group--- */}
@@ -318,4 +243,4 @@ const NewFleet = (props) => {
   );
 };
 
-export default NewFleet;
+export default NewCargo;

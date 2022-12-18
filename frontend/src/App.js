@@ -21,6 +21,7 @@ import CreateEmployee from "./Pages/CreateEmployee/CreateEmployee";
 import Layout from "./Layouts/Layout/Layout";
 import AdminLayout from "./Layouts/Layout/AdminLayout";
 import NewFleet from "./Components/Fleet/NewFleet/NewFleet";
+import NewCargo from "./Components/Fleet/NewFleet/NewCargo";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -58,7 +59,11 @@ const router = createBrowserRouter(
             path="deilibilar/createNew"
             element={<NewFleet title={"New Deilibilar"} />}
           />
-          <Route path="cargoVehicles" />
+          <Route path="cargoVehicles/*" />
+          <Route
+            path="cargoVehicles/createNew"
+            element={<NewCargo title={"New cargo vehicle"} />}
+          />
         </Route>
         <Route path="team/*">
           <Route index element={<Team />} />

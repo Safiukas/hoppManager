@@ -17,6 +17,21 @@ const createNewDeilibilar = async (fleetData, token) => {
   return response.data;
 };
 
+//GET deilibilars
+const getDeilibilars = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(
+    "/api/dashboard/allFleet/deilibilar",
+    config
+  );
+
+  return response.data;
+};
+
 // create cargo
 const createCargo = async (cargoData, token) => {
   const config = {
@@ -37,6 +52,7 @@ const createCargo = async (cargoData, token) => {
 const fleetService = {
   createNewDeilibilar,
   createCargo,
+  getDeilibilars,
 };
 
 export default fleetService;

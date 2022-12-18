@@ -3,7 +3,7 @@ import fleetService from "./fleetService";
 
 const initialState = {
   fleetInfo: [],
-  cargoInfo: [],
+  allDeilibilars: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -17,6 +17,25 @@ export const createNewDeilibilar = createAsyncThunk(
     try {
       const token = thunkAPI.getState().auth.user.token;
       return await fleetService.createNewDeilibilar(fleetData, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// GET ALL deilibilars
+export const getDeilibilars = createAsyncThunk(
+  "/dashboard/allFleet/deilibilar",
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await fleetService.getDeilibilars(token);
     } catch (error) {
       const message =
         (error.response &&
@@ -65,6 +84,32 @@ export const fleetSlice = createSlice({
         state.message = action.payload;
       })
       .addCase(createNewDeilibilar.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getDeilibilars.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getDeilibilars.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.allDeilibilars = action.payload;
+      })
+      .addCase(getDeilibilars.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(createNewCargo.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createNewCargo.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(createNewCargo.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

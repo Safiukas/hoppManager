@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const FleetSchema = new mongoose.Schema(
+const CargoSchema = new mongoose.Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
@@ -26,10 +26,6 @@ const FleetSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
-    generalCheck: {
-      type: Object,
-      require: true,
-    },
     image: [
       {
         public_id: {
@@ -48,4 +44,4 @@ const FleetSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("Fleet", FleetSchema);
+export default mongoose.model("Cargo", CargoSchema);

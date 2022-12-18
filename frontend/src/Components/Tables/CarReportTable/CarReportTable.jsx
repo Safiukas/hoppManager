@@ -45,7 +45,7 @@ const CarReportTable = (props) => {
                 Date created:
               </th>
             </tr>
-            {carReports.map((report, index) => {
+            {carReports.slice(-5).map((report, index) => {
               return (
                 <tr key={index} className="border-b border-[#1ce5be]">
                   <td className="pr-3 py-3 text-center">#00{index}</td>
