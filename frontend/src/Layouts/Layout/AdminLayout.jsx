@@ -1,14 +1,20 @@
 import { Outlet } from "react-router-dom";
 import AdminHeader from "../Header/AdminHeader";
-import { useSelector } from "react-redux";
+import { logout } from "../../Features/Auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const AdminLayout = () => {
   const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
-  if (!user) {
-    return <Navigate to="/" replace />;
-  }
+  useEffect(() => {
+    if (!user) {
+      dispatch(logout());
+      <Navigate to="/" replace />;
+    }
+  }, [dispatch]);
 
   if (user.role !== "Admin") {
     return <Navigate to="/home" replace />;

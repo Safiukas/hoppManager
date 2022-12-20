@@ -10,8 +10,6 @@ const DailyCarsTable = () => {
 
   const { allCargos, isLoading } = useSelector((state) => state.cargo);
 
-  console.log(allCargos);
-
   useEffect(() => {
     dispatch(getCargos());
   }, [dispatch]);

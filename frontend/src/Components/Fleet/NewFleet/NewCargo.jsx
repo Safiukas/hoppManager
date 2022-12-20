@@ -1,4 +1,4 @@
-import { createNewCargo } from "./../../../Features/newFleet/fleetSlice";
+import { createNewCargo } from "./../../../Features/newFleet/cargoSlice";
 import { useState } from "react";
 import { BiImageAdd } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
@@ -66,7 +66,7 @@ const NewCargo = (props) => {
   const dispatch = useDispatch();
 
   const { isError, isSuccess, isLoading, message } = useSelector(
-    (state) => state.fleet
+    (state) => state.cargo
   );
 
   useEffect(() => {

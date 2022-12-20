@@ -9,6 +9,7 @@ import {
   createCargo,
   createFleet,
   getCargos,
+  getDeilibilar,
   getDeilibilars,
 } from "../controllers/fleet.js";
 
@@ -26,10 +27,16 @@ router.get("/team/hoppers", protect, getHoppers);
 router.get("/team/captains", protect, getCaptains);
 
 // FLEET
+// DEILIBILARS
+//
 // POST Deilibilar
 router.post("/fleet/createNewDeilibilar", protect, createFleet);
 // GET ALL deilibilars
 router.get("/allFleet/deilibilar", protect, getDeilibilars);
+// GET BY ID Deilibilar
+router.get("/allFleet/deilibilar/:id", protect, getDeilibilar);
+
+// CARGOS
 // POST cargo vehicle
 router.post("/fleet/createNewCargo", protect, createCargo);
 // GET ALL cargo vehicles

@@ -22,6 +22,7 @@ import Layout from "./Layouts/Layout/Layout";
 import AdminLayout from "./Layouts/Layout/AdminLayout";
 import NewFleet from "./Components/Fleet/NewFleet/NewFleet";
 import NewCargo from "./Components/Fleet/NewFleet/NewCargo";
+import Deilibilar from "./Components/SingleComponents/DailyCar/Deilibilar";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -59,6 +60,7 @@ const router = createBrowserRouter(
             path="deilibilar/createNew"
             element={<NewFleet title={"New Deilibilar"} />}
           />
+          <Route path="deilibilar/:id" element={<Deilibilar />} />
           <Route path="cargoVehicles/*" />
           <Route
             path="cargoVehicles/createNew"

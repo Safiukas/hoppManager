@@ -34,6 +34,16 @@ export const createFleet = async (req, res, next) => {
   }
 };
 
+//GET SINGLE deilibilar
+export const getDeilibilar = async (req, res) => {
+  try {
+    const deilibilar = await Fleet.findById(req.params.id).populate("userId");
+    res.status(200).json(deilibilar);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //Get deilibilars
 export const getDeilibilars = async (req, res) => {
   try {

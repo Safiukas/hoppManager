@@ -31,7 +31,6 @@ const getCarReports = async (token) => {
 
 // GET car report by ID
 const getCarReportById = async (id, token) => {
-  //Get token
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,

@@ -32,17 +32,15 @@ const getDeilibilars = async (token) => {
   return response.data;
 };
 
-// create cargo
-const createCargo = async (cargoData, token) => {
+//GET Deilibilar by ID
+const getSingleDeilibilar = async (id, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-
-  const response = await axios.post(
-    "/api/dashboard/fleet/createNewCargo",
-    cargoData,
+  const response = await axios.get(
+    `/api/dashboard//allFleet/deilibilar/${id}`,
     config
   );
 
@@ -51,8 +49,8 @@ const createCargo = async (cargoData, token) => {
 
 const fleetService = {
   createNewDeilibilar,
-  createCargo,
   getDeilibilars,
+  getSingleDeilibilar,
 };
 
 export default fleetService;

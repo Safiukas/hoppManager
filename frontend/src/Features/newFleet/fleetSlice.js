@@ -48,13 +48,13 @@ export const getDeilibilars = createAsyncThunk(
   }
 );
 
-//new cargo
-export const createNewCargo = createAsyncThunk(
-  "dashboard/fleet/createNewCargo",
-  async (cargoData, thunkAPI) => {
+//GET Deilibilar by ID
+export const getDeilibilarProfile = createAsyncThunk(
+  "/dashboard/allFleet/deilibilar/:id",
+  async (id, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await fleetService.createCargo(cargoData, token);
+      return await fleetService.getSingleDeilibilar(id, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -101,15 +101,15 @@ export const fleetSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
-      .addCase(createNewCargo.pending, (state) => {
+      .addCase(getDeilibilarProfile.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(createNewCargo.fulfilled, (state, action) => {
+      .addCase(getDeilibilarProfile.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
+        state.isSuccess = true;
+        state.fleetInfo = action.payload;
       })
-      .addCase(createNewCargo.rejected, (state, action) => {
+      .addCase(getDeilibilarProfile.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
