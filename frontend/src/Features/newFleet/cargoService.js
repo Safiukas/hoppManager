@@ -29,9 +29,25 @@ const getCargos = async (token) => {
   return response.data;
 };
 
+//GET Cargo by ID
+const getSingleCargo = async (id, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(
+    `/api/dashboard/allFleet/cargo/${id}`,
+    config
+  );
+
+  return response.data;
+};
+
 const cargoService = {
   createCargo,
   getCargos,
+  getSingleCargo,
 };
 
 export default cargoService;

@@ -23,6 +23,8 @@ import AdminLayout from "./Layouts/Layout/AdminLayout";
 import NewFleet from "./Components/Fleet/NewFleet/NewFleet";
 import NewCargo from "./Components/Fleet/NewFleet/NewCargo";
 import Deilibilar from "./Components/SingleComponents/DailyCar/Deilibilar";
+import CargoCar from "./Components/SingleComponents/CargoCar/CargoCar";
+import User from "./Components/SingleComponents/User/User";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,6 +36,7 @@ const router = createBrowserRouter(
         <Route path="accidentReport" element={<AccidentReport />} />
         <Route path="carReport" element={<DailyCarReport />} />
         <Route path="shiftReport" element={<ShiftReport />} />
+        <Route path="profile" element={<User />} />
       </Route>
 
       <Route path="/dashboard/*" element={<AdminLayout />}>
@@ -66,6 +69,7 @@ const router = createBrowserRouter(
             path="cargoVehicles/createNew"
             element={<NewCargo title={"New cargo vehicle"} />}
           />
+          <Route path="cargoVehicles/:id" element={<CargoCar />} />
         </Route>
         <Route path="team/*">
           <Route index element={<Team />} />

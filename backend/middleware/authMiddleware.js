@@ -40,6 +40,42 @@ export const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Change user password
+// @route   UPDATE /api/home/profile
+// @access  Private
+export const changePassword = asyncHandler(async (req, res) => {
+  const { password, newPassword, newPassword2 } = req.body;
+  const { id } = req.params;
+
+  const user = await User.findOne({ id });
+  // Check if old password is correct
+
+  try {
+    await bcrypt.compare(password, user.password);
+    if (newPassword === newPassword2) {
+      const salt = bcrypt.genSaltSync(10);
+      const hash = bcrypt.hashSync(req.body.newPassword, salt);
+
+      const updatedPassword = await User.findByIdAndUpdate(
+        { _id: id },
+        { password: hash },
+        {
+          new: true,
+        }
+      );
+      updatedPassword.save();
+      res.status(200).json(updatedPassword);
+      console.log("Password successfully changed!");
+    } else {
+      res.status(400);
+      throw new Error("Passwords don't match");
+    }
+  } catch (error) {
+    res.status(400);
+    throw new Error(error);
+  }
+});
+
 // @desc    Get user data
 // @route   GET /api/users/me
 // @access  Private

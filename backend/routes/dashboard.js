@@ -4,10 +4,12 @@ import {
   createEmployee,
   getHoppers,
   getCaptains,
+  inviteEmployee,
 } from "../controllers/teamController.js";
 import {
   createCargo,
   createFleet,
+  getCargo,
   getCargos,
   getDeilibilar,
   getDeilibilars,
@@ -17,6 +19,8 @@ const router = express.Router();
 
 //POST employee
 router.post("/team/createEmployee", protect, createEmployee);
+// INVITE employee
+router.post("/team/inviteEmployee", protect, inviteEmployee);
 
 //UPDATE employee
 
@@ -41,5 +45,7 @@ router.get("/allFleet/deilibilar/:id", protect, getDeilibilar);
 router.post("/fleet/createNewCargo", protect, createCargo);
 // GET ALL cargo vehicles
 router.get("/allFleet/cargo", protect, getCargos);
+//GET by ID Cargo
+router.get("/allFleet/cargo/:id", protect, getCargo);
 
 export default router;

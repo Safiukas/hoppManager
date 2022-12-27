@@ -95,3 +95,13 @@ export const getCargos = async (req, res) => {
     console.log(error);
   }
 };
+
+//GET SINGLE cargo
+export const getCargo = async (req, res) => {
+  try {
+    const cargo = await Cargo.findById(req.params.id).populate("userId");
+    res.status(200).json(cargo);
+  } catch (error) {
+    console.log(error);
+  }
+};

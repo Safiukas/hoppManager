@@ -55,7 +55,7 @@ const DailyCarsTable = () => {
                   <td className="pr-3 py-3 text-center">
                     <Link
                       className="text-[#ececec] hover:text-[#1ce5be]"
-                      to={`/dashboard/dailyCarReports/${cargo._id}`}
+                      to={`/dashboard/allFleet/cargoVehicles/${cargo._id}`}
                     >
                       <HiDocumentSearch className="text-xl" />
                     </Link>

@@ -4,7 +4,6 @@ const API_URL = "/api/home/accidentReport";
 
 // Create new accident report
 const createAccidentReport = async (accidentData, token) => {
-  //Get token
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,

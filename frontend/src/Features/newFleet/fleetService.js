@@ -40,7 +40,7 @@ const getSingleDeilibilar = async (id, token) => {
     },
   };
   const response = await axios.get(
-    `/api/dashboard//allFleet/deilibilar/${id}`,
+    `/api/dashboard/allFleet/deilibilar/${id}`,
     config
   );
 

@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Moment from "react-moment";
 import { getDeilibilarProfile } from "../../../Features/newFleet/fleetSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Spinner from "../../Spinner/Spinner";
 
-const CarReport = () => {
+const Deilibilar = () => {
   const dispatch = useDispatch();
 
   const { fleetInfo, isError, message, isLoading } = useSelector(
@@ -80,21 +80,21 @@ const CarReport = () => {
               <span className="text-[#ececec] mb-3"></span>
             </div>
 
-            {fleetInfo.generalCheck.checklist.length > 0 ? (
+            {fleetInfo.generalCheck?.checklist ? (
               <div className="flex flex-col">
                 <span className="text-[#ff5783] text-lg font-semibold mb-2">
-                  Come with:
+                  Comes with:
                 </span>
                 <div className="flex flex-col mb-3">
                   <ul className="text-[#ececec]">
-                    {fleetInfo.generalCheck
-                      ? fleetInfo.generalCheck?.checklist[0]?.map(
+                    {fleetInfo.generalCheck?.checklist
+                      ? fleetInfo.generalCheck?.checklist?.map(
                           (check, index) => (
                             <li
                               key={index}
                               className="flex mb-1 text-lg items-center"
                             >
-                              {/* <HiCheck className="text-[#1ce5be] mr-2 mt-1" /> */}
+                              <p className="text-[#1ce5be] mr-2 mt-1"></p>
                               {check}
                             </li>
                           )
@@ -111,4 +111,4 @@ const CarReport = () => {
   );
 };
 
-export default CarReport;
+export default Deilibilar;

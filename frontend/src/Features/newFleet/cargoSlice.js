@@ -3,6 +3,7 @@ import cargoService from "./cargoService";
 
 const initialState = {
   allCargos: [],
+  cargoInfo: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -47,6 +48,25 @@ export const getCargos = createAsyncThunk(
   }
 );
 
+//GET Cargo by ID
+export const getCargoProfile = createAsyncThunk(
+  "/dashboard/allFleet/cargoVehicles/:id",
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await cargoService.getSingleCargo(id, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const cargoSlice = createSlice({
   name: "cargo",
   initialState,
@@ -77,6 +97,19 @@ export const cargoSlice = createSlice({
         state.message = action.payload;
       })
       .addCase(createNewCargo.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getCargoProfile.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getCargoProfile.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.cargoInfo = action.payload;
+      })
+      .addCase(getCargoProfile.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
