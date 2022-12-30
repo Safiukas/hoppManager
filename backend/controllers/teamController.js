@@ -2,6 +2,7 @@ import asyncHandler from "express-async-handler";
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import SendInvite from "../middleware/mailer.js";
 
 // @desc    Register new user
 // @route   POST /api/dashboard/team/createEmployee
@@ -73,14 +74,17 @@ export const inviteEmployee = async (req, res) => {
       return res
         .status(500)
         .json({ msg: "No user in database with this email!" });
+    } else {
+      // Access token
+      const secret = process.env.JWT + User.password;
+      const token = jwt.sign({ id: user._id }, secret, { expiresIn: "30m" });
+
+      const firstName = user.firstName;
+      SendInvite({ email, firstName, link });
+
+      const link = `http://localhost:3000/api/auth/invitationLink/${user.id}/${token}`;
+      await res.status(200).json({ msg: "Link has been sent to employee!" });
     }
-    console.log(user);
-    // Access token
-    const secret = process.env.JWT + User.password;
-    const token = jwt.sign({ id: user._id }, secret, { expiresIn: "60m" });
-    const link = `http://localhost:3000/api/auth/invitationLink/${user.id}/${token}`;
-    await res.send("Link has been sent to employee!");
-    console.log(link);
   } catch (error) {
     console.log(error);
   }
@@ -120,13 +124,24 @@ export const changePassword = async (req, res) => {
 
   // id exists ?
   if (!user) {
-    return res.send("User not exists!");
+    return res.status(500).json({ msg: "User not exists!" });
   }
 
   const secret = process.env.JWT + User.password;
+
   try {
     const payload = jwt.verify(token, secret);
-  } catch (error) {}
+    const salt = bcrypt.genSaltSync(10);
+    if (password === password2) {
+      return res.status(500).json({ msg: "Passwords needs to match!" });
+    } else {
+      const hashPassword = bcrypt.hashSync(password, salt);
+      await User.findOneAndUpdate({ id: id }, { password: hashPassword });
+      res.status(200).json({ msg: "Password updated successfully!" });
+    }
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
 };
 
 // @desc    List of Hoppers
@@ -158,4 +173,5 @@ export default {
   getCaptains,
   createEmployee,
   inviteEmployee,
+  changePassword,
 };

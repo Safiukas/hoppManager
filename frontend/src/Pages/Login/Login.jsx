@@ -48,11 +48,11 @@ const Login = () => {
     (state) => state.auth
   );
 
-  useEffect(() => {
-    if (isError) {
-      errToast(`${message}`);
-    }
+  if (isError) {
+    errToast(message);
+  }
 
+  useEffect(() => {
     if (isSuccess || user) {
       navigate("/home");
     } else {

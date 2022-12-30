@@ -1,5 +1,8 @@
 import express from "express";
-import { invitationLink } from "../controllers/teamController.js";
+import {
+  changePassword,
+  invitationLink,
+} from "../controllers/teamController.js";
 import { loginUser } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
@@ -20,6 +23,6 @@ router.get("/invitationLink/:id/:token", invitationLink);
 //  Password change
 //  @Route /invitationLink/:id/:token
 //  @access limited
-router.post("/invitationLink/:id/:token");
+router.post("/invitationLink/:id/:token", changePassword);
 
 export default router;

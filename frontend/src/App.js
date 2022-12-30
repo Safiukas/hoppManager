@@ -25,12 +25,14 @@ import NewCargo from "./Components/Fleet/NewFleet/NewCargo";
 import Deilibilar from "./Components/SingleComponents/DailyCar/Deilibilar";
 import CargoCar from "./Components/SingleComponents/CargoCar/CargoCar";
 import User from "./Components/SingleComponents/User/User";
+import GmailLayout from "./Layouts/GmailLayout/GmailLayout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
       <Route path="/" element={<Login />} />
-
+      {/* !!!!!! TEMP component !!!! */}
+      <Route path="/gmail" element={<GmailLayout />} />
       <Route path="/home" element={<Layout />}>
         <Route index element={<CaptainHome />} />
         <Route path="accidentReport" element={<AccidentReport />} />
